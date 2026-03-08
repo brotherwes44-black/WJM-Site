@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Wesley J. Morris — Work, experience, facilitation, speaking, and consulting rooted in community transformation and liberatory education." />
+  <title>Work — Wesley J. Morris</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    /* Two-column layout for awards + engagements */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+    .two-col--3-2 {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 5rem;
+    }
+    .exp-item--dark {
+      border-color: rgba(201,151,43,0.12);
+    }
+    .exp-item--dark:first-child {
+      border-top-color: rgba(201,151,43,0.12);
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+    .tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border: 1px solid rgba(139,69,19,0.25);
+      color: var(--copper-light);
+    }
+    .tag--dark {
+      border-color: rgba(201,151,43,0.3);
+      color: var(--gold-light);
+    }
+    .inline-link {
+      color: var(--copper);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(139,69,19,0.25);
+      transition: border-color 0.2s;
+    }
+    .inline-link:hover { border-color: var(--copper); }
+    .resume-cta {
+      background: rgba(201,151,43,0.06);
+      border: 1px solid rgba(201,151,43,0.2);
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .resume-cta p {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.95rem;
+      font-style: italic;
+      color: rgba(61,43,31,0.7);
+      line-height: 1.6;
+    }
+    @media (max-width: 900px) {
+      .two-col, .two-col--3-2 { grid-template-columns: 1fr; gap: 3rem; }
+      .resume-cta { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAV ══ -->
+  <nav id="main-nav">
+    <a href="index.html" class="nav-brand">Wesley J. Morris</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="work.html" class="active">Work</a></li>
+      <li><a href="framework.html">UHURU</a></li>
+      <li><a href="blog.html">Writing</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ══ PAGE HEADER ══ -->
+  <header class="page-header" data-watermark="WORK">
+    <div class="page-header-inner">
+      <p class="t-eyebrow">Experience &amp; Services</p>
+      <h1 class="t-display t-display--light" style="font-size: clamp(3rem, 6vw, 6rem);">The Work</h1>
+      <p class="page-header-sub">
+        Twenty-plus years of scholarship, organizing, pastoral leadership, and transformative facilitation — in the room and across the world.
+      </p>
+      <div class="tag-row" style="margin-top: 2rem;">
+        <span class="tag tag--dark">Consulting</span>
+        <span class="tag tag--dark">Facilitation</span>
+        <span class="tag tag--dark">Speaking</span>
+        <span class="tag tag--dark">Theology</span>
+        <span class="tag tag--dark">Community Organizing</span>
+        <span class="tag tag--dark">Leadership Development</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══ SERVICES DETAIL ══ -->
+  <section class="section section--light" id="services">
+    <div class="section-inner">
+      <p class="section-label reveal">Offerings</p>
+      <h2 class="section-heading reveal">What I <em>Offer</em></h2>
+      <p class="section-subhead reveal">Each engagement is shaped by context, community, and the specific terrain of transformation you are navigating.</p>
+      <div class="card-grid card-grid--3 reveal">
+        <div class="card">
+          <div class="card-number">01</div>
+          <div class="card-title">Consulting</div>
+          <p class="card-body">Strategic advisory services for faith communities, educational institutions, nonprofits, and corporate clients. Engagements are tailored: from single-session strategy sessions to long-term advisory relationships.</p>
+          <ul class="engagement-list" style="margin-top: 1.2rem;">
+            <li>Organizational strategy &amp; visioning</li>
+            <li>Leadership coaching &amp; development</li>
+            <li>Justice-centered institutional design</li>
+            <li>Program development &amp; evaluation</li>
+          </ul>
+          <p class="card-detail">Individual · Organizational · Executive</p>
+        </div>
+        <div class="card">
+          <div class="card-number">02</div>
+          <div class="card-title">Facilitation &amp; Training</div>
+          <p class="card-body">Transformative facilitation grounded in justice-centered pedagogy, liberation theology, and community organizing. Available as half-day workshops, full-day immersives, multi-day retreats, or ongoing cohort experiences.</p>
+          <ul class="engagement-list" style="margin-top: 1.2rem;">
+            <li>Race, gender, and power in organizations</li>
+            <li>Beloved Community leadership formation</li>
+            <li>Conflict transformation &amp; restorative practice</li>
+            <li>Strategic planning &amp; visioning retreats</li>
+            <li>Cross-movement organizing</li>
+          </ul>
+          <p class="card-detail">Workshop · Immersive · Retreat · Cohort</p>
+        </div>
+        <div class="card">
+          <div class="card-number">03</div>
+          <div class="card-title">Speaking &amp; Preaching</div>
+          <p class="card-body">Keynote addresses, sermons, lectures, and conference presentations at the convergence of theology, education, race, and liberation. A voice that moves from the particular to the universal — grounded in story, rigorous in analysis.</p>
+          <ul class="engagement-list" style="margin-top: 1.2rem;">
+            <li>Conference keynotes &amp; plenaries</li>
+            <li>Guest preaching &amp; revival</li>
+            <li>University lectures &amp; panels</li>
+            <li>Denominational convenings</li>
+          </ul>
+          <p class="card-detail">Keynote · Preaching · Lecture · Panel</p>
+        </div>
+      </div>
+      <div class="resume-cta">
+        <p>All engagements are available in-person, virtually, or in hybrid formats. National and international travel is available for select engagements.</p>
+        <a href="index.html#contact" class="btn btn--primary" style="white-space:nowrap;">Start a Conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- ══ CURRENT POSITIONS ══ -->
+  <section class="section section--parchment" id="current">
+    <div class="section-inner">
+      <p class="section-label reveal">Current Roles</p>
+      <h2 class="section-heading reveal">Present <em>Positions</em></h2>
+      <div class="exp-list reveal">
+        <div class="exp-item">
+          <div class="exp-meta">
+            <div class="exp-org">Faith Community Church</div>
+            <div class="exp-dates">2018 – Present · Greensboro, NC</div>
+          </div>
+          <div>
+            <div class="exp-role">Senior Pastor</div>
+            <p class="exp-desc">Provides leadership in all aspects of church operations and ministry. Oversees justice-centered ministry ensuring stability, creativity, and positive impact in the local and statewide social justice community. Directs worship planning and transformative religious experience. Serves as Vice President of the Pulpit Forum, a Guilford County ministers' association.</p>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <div class="exp-org">Southern Vision Alliance</div>
+            <div class="exp-dates">2020 – Present</div>
+          </div>
+          <div>
+            <div class="exp-role">VP of Programs / Chief Program Officer</div>
+            <p class="exp-desc">Supervises program directors in re-granting strategy, program implementation, and fundraising as a grassroots intermediary. Manages grantmaking budgets for three flagship funds: <em>Queer Mobilization Fund</em>, <em>Frontline Fund</em>, and <em>Carolina Youth Power Fund</em>. Develops new social justice programs, fellowships, and partnerships across the US South to build sustainable community power.</p>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <div class="exp-org">Fordham University</div>
+            <div class="exp-dates">Current · New York</div>
+          </div>
+          <div>
+            <div class="exp-role">PhD Candidate, Education &amp; Leadership</div>
+            <p class="exp-desc">Doctoral studies in Education and Leadership at the Graduate School of Education. Dissertation focus: <em>Fugitive Christology and Liberatory Education</em>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PRIOR EXPERIENCE ══ -->
+  <section class="section section--earth" id="experience">
+    <div class="section-inner">
+      <p class="section-label section-label--gold reveal">Prior Experience</p>
+      <h2 class="section-heading section-heading--light reveal">The <em style="color:var(--gold-light);">Formation</em></h2>
+      <div class="exp-list reveal">
+        <div class="exp-item exp-item--dark">
+          <div class="exp-meta">
+            <div class="exp-org exp-org--light">Beloved Community Center</div>
+            <div class="exp-dates exp-dates--light">2017 – 2020</div>
+          </div>
+          <div>
+            <div class="exp-role exp-role--light">Director, BOTHI</div>
+            <p class="exp-desc exp-desc--light">Led the Beloved Organizing Training &amp; Healing Institute. Created curricula, cohorts, and training schedules — trained over 100 local community organizers. Provided guidance and planning for community organizing and healing initiatives.</p>
+          </div>
+        </div>
+        <div class="exp-item exp-item--dark">
+          <div class="exp-meta">
+            <div class="exp-org exp-org--light">Union Theological Seminary</div>
+            <div class="exp-dates exp-dates--light">2015 – 2017 · New York</div>
+          </div>
+          <div>
+            <div class="exp-role exp-role--light">Resident Life Assistant / Admissions Representative</div>
+            <p class="exp-desc exp-desc--light">Provided spiritual care, chaplaincy, and conflict resolution for on-campus residents. Served as public representative of UTS, organizing recruitment events and maintaining correspondence with applicants. Awarded the Julius Thomas Hanson Memorial Award and Preaching Excellence Episcopal Foundation Fellowship.</p>
+          </div>
+        </div>
+        <div class="exp-item exp-item--dark">
+          <div class="exp-meta">
+            <div class="exp-org exp-org--light">Harlem Hospital</div>
+            <div class="exp-dates exp-dates--light">2015 – 2016 · New York</div>
+          </div>
+          <div>
+            <div class="exp-role exp-role--light">Chaplain, Pastoral Care Department</div>
+            <p class="exp-desc exp-desc--light">Ensured quality spiritual care for patients, staff, and families. Provided leadership for the mid-day hospital interreligious service.</p>
+          </div>
+        </div>
+        <div class="exp-item exp-item--dark">
+          <div class="exp-meta">
+            <div class="exp-org exp-org--light">Beloved Community Center</div>
+            <div class="exp-dates exp-dates--light">2007 – 2015 · Greensboro, NC</div>
+          </div>
+          <div>
+            <div class="exp-role exp-role--light">Community Organizer — Youth &amp; Student Initiatives Co-Director</div>
+            <p class="exp-desc exp-desc--light">Led and coordinated local student movements addressing voting rights, environmental justice, police accountability, and academic freedom. Guest lecturer at Guilford College, NC A&amp;T, UNCG, and Bennett College. Organized educational tours for clergy with the Farm Labor Organizing Committee. Organized the "Paradigm Shift" initiative — bringing together street groups to create safe zones and community empowerment alternatives addressing criminalization and mass incarceration. Speaker at the US Social Forum, Marygrove College Detroit, and the 21st Century Freedom Ride historical tour.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SELECTED ENGAGEMENTS + INTERNATIONAL ══ -->
+  <section class="section section--light" id="engagements">
+    <div class="section-inner">
+      <p class="section-label reveal">Selected Practice</p>
+      <h2 class="section-heading reveal">Facilitation, Consulting<br />&amp; <em>International Work</em></h2>
+      <div class="two-col reveal" style="margin-top: 3.5rem;">
+        <div>
+          <p class="t-eyebrow" style="margin-bottom:1.5rem;">Selected Domestic Engagements</p>
+          <ul class="engagement-list">
+            <li><strong>Borealis Philanthropy</strong> Staff &amp; Board Retreat — "Grounding in Place," Keynote Facilitator (2024)</li>
+            <li><strong>Children's Defense Fund</strong> Hall-Proctor Conference — "Intergenerational Conversations," Presenter (2024)</li>
+            <li><strong>Southern Summit Conference</strong> — "Community Organizing for Power," Presenter (2024)</li>
+            <li><strong>Lilly Foundation</strong> — "Rewilding Otherwise," Church Anew Team, Grant Recipient (2023–Present)</li>
+            <li><strong>Grantmakers for Southern Progress</strong> — Equitable Philanthropy Cohort, Faculty Member (2022–Present)</li>
+            <li><strong>Community Catalyst</strong> Annual Gathering — "Cross-Movement Organizing," Speaker (2021)</li>
+            <li><strong>DEI Facilitator</strong> with Social Designs — four organizations (2022)</li>
+            <li><strong>United Nations</strong>, New York City — Climate Change Summit, Speaker (2015)</li>
+            <li><strong>Union Theological Seminary</strong> — "Faith in America" Series, Panelist alongside ACLU Director Anthony Romero and Dr. Gary Dorrien (2017)</li>
+            <li><strong>Church of the Brethren</strong> Denominational Convention — Racial Justice &amp; America Keynote (2016)</li>
+            <li><strong>National Restorative Justice (RJOY) Conference</strong> — Workshop Leader, Oakland, CA (2017)</li>
+            <li><strong>Racial Equity and Liberation Strategies</strong> Network Facilitator, Berkeley, CA (2017)</li>
+            <li><strong>Zilphia Horton Cultural Organizing Institute</strong>, Highlander Education Center, Knoxville, TN (2012)</li>
+            <li><strong>Project Understanding</strong> — Facilitator for Jewish and African American high school students, Washington, DC (2012, annual)</li>
+          </ul>
+        </div>
+        <div>
+          <p class="t-eyebrow" style="margin-bottom:1.5rem;">International Engagements</p>
+          <ul class="engagement-list">
+            <li>Progressive Pilgrimage to <strong>South India</strong> — Enfleshing Witness, Leadership Team and Organizer</li>
+            <li><strong>Ethiopia</strong> — Social and Cultural Exchange, Addis Ababa and Shasamane</li>
+            <li><strong>Ghana</strong> — "Through the Lens of Accra," Educational and Social Exchange (Spring 2023)</li>
+            <li><strong>Cuba</strong> — Four educational tours with the Venceremos Brigade; enrolled 300+ participants</li>
+            <li><strong>Palestine &amp; Israel</strong> — FOSNA Ecumenical Liberation Theology Center Tour (Summer 2023)</li>
+            <li><strong>Brazil</strong> — Co-hosted delegation of climate activists from Salvador (2022); Veterans of Hope Project cultural exchange (2009)</li>
+            <li><strong>Belize</strong> — Leadership Tour, Dreamcatchers Organization</li>
+            <li><strong>Barbados</strong> — Facilitator and co-leader of two educational tours for African American high school students (2013, 2016)</li>
+            <li><strong>Mt. Kilimanjaro, Tanzania</strong> — Summited Uhuru Peak (5,895m) via Machame Route (2017) — origin of the UHURU Framework™</li>
+            <li>Visiting professor on Civil Rights and NC History for <strong>Germany's Fulbright Scholar Program</strong> at UNCG (2012)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- ══ EDUCATION ══ -->
+  <section class="section section--parchment" id="education">
+    <div class="section-inner">
+      <p class="section-label reveal">Formation</p>
+      <h2 class="section-heading reveal"><em>Education</em></h2>
+      <div class="exp-list reveal">
+        <div class="exp-item">
+          <div class="exp-meta">
+            <div class="exp-org">Fordham University</div>
+            <div class="exp-dates">Current · New York</div>
+          </div>
+          <div>
+            <div class="exp-role">PhD, Education and Leadership</div>
+            <p class="exp-desc">Graduate School of Education. Dissertation: <em>Fugitive Christology and Liberatory Education</em>. Supported by the Elinor R. Ford Endowed Scholarship and the Center for Catholic School Leadership Scholarship (2025).</p>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <div class="exp-org">Union Theological Seminary</div>
+            <div class="exp-dates">2017 · New York</div>
+          </div>
+          <div>
+            <div class="exp-role">Master of Divinity</div>
+            <p class="exp-desc">Studies under Dr. James Cone and Dr. Cornel West. Julius Thomas Hanson Memorial Award recipient. Preaching Excellence Episcopal Foundation Fellow. Millennial Leaders Project. Commencement Speaker, 2017.</p>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-meta">
+            <div class="exp-org">NC A&amp;T State University</div>
+            <div class="exp-dates">2007 · Greensboro, NC</div>
+          </div>
+          <div>
+            <div class="exp-role">Bachelor of Arts, History</div>
+            <p class="exp-desc">Foundation in historical analysis, social movements, and the intellectual traditions of the African American freedom struggle.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FELLOWSHIPS & AWARDS ══ -->
+  <section class="section section--dark" id="awards">
+    <div class="section-inner">
+      <p class="section-label section-label--gold reveal">Recognition</p>
+      <h2 class="section-heading section-heading--light reveal">Fellowships &amp; <em style="color:var(--gold-light);">Awards</em></h2>
+      <div class="two-col reveal" style="margin-top: 3rem;">
+        <div>
+          <div class="award-list">
+            <div class="award-item">
+              <span class="award-year">2025</span>
+              <span class="award-text award-text--light">Elinor R. Ford, PhD UGE '56 Endowed Scholarship</span>
+            </div>
+            <div class="award-item">
+              <span class="award-year">2025</span>
+              <span class="award-text award-text--light">Center for Catholic School Leadership Scholarship</span>
+            </div>
+            <div class="award-item">
+              <span class="award-year">2024</span>
+              <span class="award-text award-text--light">Center for Community Engagement and Social Justice Fellow</span>
+            </div>
+            <div class="award-item">
+              <span class="award-year">2024</span>
+              <span class="award-text award-text--light">Compelling Preaching Grant <em>— Lilly Foundation — "Rewilding Otherwise"</em></span>
+            </div>
+            <div class="award-item">
+              <span class="award-year">2022</span>
+              <span class="award-text award-text--light">Faculty Member <em>— Grantmakers for Southern Progress</em></span>
+            </div>
+            <div class="award-item">
+              <span class="award-year">2019</span>
+              <span class="award-text award-text--light">Esther Award <em>— Sonia Sotomayor — WRLP Annual Esther Awards Luncheon, Guilford County</em></span>
+            </div>
+            <div class="award-item">
+              <span class="award-year">2018</span>
+              <span class="award-text award-text--light">Ordination in Christian Ministry</span>
+            </div>
+            <div class="award-item">
+              <span class="award-year">2017</span>
+              <span class="award-text award-text--light">Julius Thomas Hanson Memorial Award <em>— Union Theological Seminary</em></span>
+            </div>
+            <div class="award-item">
+              <span class="award-year">2017</span>
+              <span class="award-text award-text--light">Preaching Excellence Fellow <em>— Episcopal Foundation</em></span>
+            </div>
+            <div class="award-item">
+              <span class="award-year">2016</span>
+              <span class="award-text award-text--light">Millennial Leaders Project <em>— Union Theological Seminary</em></span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="award-list">
+            <div class="award-item">
+              <span class="award-year">2016</span>
+              <span class="award-text award-text--light">Aspen Institute Leadership Fellow <em>— Aspen, Colorado</em></span>
+            </div>
+            <div class="award-item">
+              <span class="award-year">2015</span>
+              <span class="award-text award-text--light">Higher Education in Prisons Program Honoree</span>
+            </div>
+            <div class="award-item">
+              <span class="award-year">2014</span>
+              <span class="award-text award-text--light">Center for Documentary Studies Fellow <em>— Duke University</em></span>
+            </div>
+            <div class="award-item">
+              <span class="award-year">2011</span>
+              <span class="award-text award-text--light">Martin Luther King Jr. Youth Organizer Self-Determination Award <em>— NC NAACP</em></span>
+            </div>
+            <div class="award-item">
+              <span class="award-year">2010</span>
+              <span class="award-text award-text--light">Elon University Research Seminar on Engaged Undergraduate Learning</span>
+            </div>
+            <div class="award-item">
+              <span class="award-year">2009</span>
+              <span class="award-text award-text--light">Beloved Communities Initiative <em>— Grace Lee Boggs, Detroit, MI</em></span>
+            </div>
+            <div class="award-item">
+              <span class="award-year">2008</span>
+              <span class="award-text award-text--light">Center for Community Change Fellow <em>— Washington, DC</em></span>
+            </div>
+            <div class="award-item">
+              <span class="award-year">2008</span>
+              <span class="award-text award-text--light">Defenders of Justice <em>— NC Justice Center</em></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="site-footer">
+    <span class="footer-brand">Wesley J. Morris LLC</span>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="framework.html">UHURU</a></li>
+      <li><a href="blog.html">Writing</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 Wesley J. Morris LLC. All rights reserved.</span>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    window.addEventListener('scroll', () => {
+      document.getElementById('main-nav').style.boxShadow = window.scrollY > 40 ? '0 2px 24px rgba(26,16,8,0.1)' : 'none';
+    });
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => { navLinks.classList.toggle('open'); });
+  </script>
+</body>
+</html>

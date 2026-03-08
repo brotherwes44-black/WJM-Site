@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Wesley J. Morris — Scholar, Pastor, Educator, and Facilitator working at the intersection of community transformation, leadership development, and liberatory education." />
+  <title>Wesley J. Morris — Writer · Educator · Facilitator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+
+  <style>
+    /* ── Index-only styles ── */
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+      padding-bottom: 6rem;
+    }
+    .hero-texture {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(139,69,19,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(201,151,43,0.06) 0%, transparent 60%),
+        linear-gradient(180deg, var(--parchment-light) 0%, var(--parchment) 40%, #e8dece 100%);
+    }
+    .hero-photo-bg {
+      position: absolute;
+      top: 0; right: 0;
+      width: 48%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      opacity: 0.22;
+      mask-image: linear-gradient(to left, rgba(0,0,0,0.6) 0%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.6) 0%, transparent 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 3rem;
+      width: 100%;
+    }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.42em;
+      color: var(--copper);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.3s forwards;
+    }
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(4rem, 8.5vw, 8.5rem);
+      font-weight: 300;
+      line-height: 0.9;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.5s forwards;
+    }
+    .hero-name span {
+      display: block;
+      font-style: italic;
+      color: var(--copper);
+    }
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.2vw, 1.55rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--charcoal);
+      margin-top: 1.5rem;
+      max-width: 660px;
+      line-height: 1.65;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.7s forwards;
+    }
+    .hero-roles {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.9s forwards;
+    }
+    .hero-roles span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--copper-light);
+      padding-left: 1rem;
+      border-left: 2px solid var(--gold);
+    }
+    .hero-cta {
+      margin-top: 3.5rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 1.1s forwards;
+    }
+
+    /* About section (home) */
+    .about {
+      background: var(--earth);
+      color: var(--parchment-light);
+      padding: 6rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .about::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 420px; height: 420px;
+      border-radius: 50%;
+      background: rgba(201,151,43,0.05);
+    }
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .about-photo-frame { position: relative; }
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+    .photo-frame-accent {
+      position: absolute;
+      top: -10px; left: -10px;
+      right: 10px; bottom: 10px;
+      border: 1px solid rgba(201,151,43,0.35);
+      pointer-events: none;
+    }
+    .photo-corner {
+      position: absolute;
+      width: 22px; height: 22px;
+      border-color: var(--gold);
+      border-style: solid;
+    }
+    .photo-corner.tl { top: 10px; left: 10px; border-width: 1.5px 0 0 1.5px; }
+    .photo-corner.tr { top: 10px; right: 10px; border-width: 1.5px 1.5px 0 0; }
+    .photo-corner.bl { bottom: 10px; left: 10px; border-width: 0 0 1.5px 1.5px; }
+    .photo-corner.br { bottom: 10px; right: 10px; border-width: 0 1.5px 1.5px 0; }
+    .about-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 1.5rem;
+    }
+    .about-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--parchment-light);
+      margin-bottom: 1.5rem;
+    }
+    .about-heading em { font-style: italic; color: var(--gold-light); }
+    .about-body {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: rgba(240,232,216,0.8);
+      margin-bottom: 1.2rem;
+    }
+
+    /* UHURU teaser */
+    .uhuru-teaser {
+      background: var(--charcoal);
+      color: var(--parchment-light);
+      padding: 6rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .uhuru-teaser::after {
+      content: 'UHURU';
+      position: absolute;
+      right: -1rem; top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      font-family: 'Cinzel', serif;
+      font-size: 8rem;
+      letter-spacing: 0.5em;
+      color: rgba(201,151,43,0.04);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .uhuru-teaser-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Contact (home) */
+    .contact-home { background: var(--ink); color: var(--parchment-light); padding: 7rem 3rem 5rem; }
+    .contact-home-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+    }
+    .contact-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--parchment-light);
+      margin-bottom: 1.4rem;
+    }
+    .contact-tagline em { font-style: italic; color: var(--gold-light); }
+
+    /* Form success */
+    #form-success {
+      display: none;
+      color: var(--gold-light);
+      font-family: 'Crimson Pro', serif;
+      font-style: italic;
+      margin-top: 1rem;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 900px) {
+      .hero-content { padding: 0 1.5rem; }
+      .about { padding: 4rem 1.5rem; }
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .about-photo-frame { max-width: 360px; }
+      .uhuru-teaser { padding: 4rem 1.5rem; }
+      .uhuru-teaser-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .contact-home { padding: 5rem 1.5rem; }
+      .contact-home-inner { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    @media (max-width: 600px) {
+      .hero-roles { flex-direction: column; gap: 0.8rem; }
+      .hero-cta { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAV ══ -->
+  <nav id="main-nav">
+    <a href="index.html" class="nav-brand">Wesley J. Morris</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="framework.html">UHURU</a></li>
+      <li><a href="blog.html">Writing</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ══ HERO ══ -->
+  <section class="hero">
+    <div class="hero-texture"></div>
+    <!-- Decorative background photo (subtle) -->
+    <img src="photos/wjm-headshot.jpg" alt="" class="hero-photo-bg" aria-hidden="true" />
+    <div class="hero-content">
+      <p class="hero-eyebrow">Wesley J. Morris LLC &nbsp;·&nbsp; Greensboro, NC</p>
+      <h1 class="hero-name">
+        Wesley J.
+        <span>Morris</span>
+      </h1>
+      <p class="hero-tagline">
+        Every person and every community has the capacity for transformation —<br />
+        and the right guide can make all the difference.
+      </p>
+      <div class="hero-roles">
+        <span>Writer</span>
+        <span>Educator</span>
+        <span>Facilitator</span>
+        <span>Pastor</span>
+      </div>
+      <div class="hero-cta">
+        <a href="work.html" class="btn btn--primary">Explore the Work</a>
+        <a href="#contact" class="btn btn--ghost">Work Together</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ABOUT ══ -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-photo-frame reveal">
+        <img src="photos/wjm-headshot.jpg" alt="Wesley J. Morris" class="about-photo" />
+        <div class="photo-frame-accent"></div>
+        <div class="photo-corner tl"></div>
+        <div class="photo-corner tr"></div>
+        <div class="photo-corner bl"></div>
+        <div class="photo-corner br"></div>
+      </div>
+      <div class="about-text reveal">
+        <p class="about-label">Scholar · Pastor · Organizer</p>
+        <h2 class="about-heading">A life rooted in<br /><em>transformation</em></h2>
+        <p class="about-body">
+          Wesley Morris is a scholar-practitioner whose work spans more than two decades at the intersection of community transformation, leadership development, and liberatory education. He brings a rare convergence of intellectual depth, spiritual grounding, and on-the-ground organizing to every engagement.
+        </p>
+        <p class="about-body">
+          Ordained as Senior Pastor of Faith Community Church in Greensboro, NC, Wesley holds a Master of Divinity from Union Theological Seminary — where he studied under Dr. Cornel West and Dr. James Cone — and is completing doctoral studies in Education and Leadership at Fordham University.
+        </p>
+        <p class="about-body">
+          Shaped by the mentorship of Rev. Nelson Johnson and the survivors of the 1979 Greensboro Massacre, his formation in the Beloved Community tradition gives him both a framework and a fire: a commitment to truth-telling, structural analysis, and the long, patient work of building just communities.
+        </p>
+        <div class="cred-list">
+          <div class="cred-item cred-item--light">MDiv, Union Theological Seminary — New York</div>
+          <div class="cred-item cred-item--light">PhD Candidate, Education &amp; Leadership — Fordham University</div>
+          <div class="cred-item cred-item--light">Senior Pastor, Faith Community Church — Greensboro, NC</div>
+          <div class="cred-item cred-item--light">NC A&amp;T Alumnus · Former Chaplain, Harlem Hospital</div>
+          <div class="cred-item cred-item--light">Facilitation across four continents — Palestine, Ghana, Tanzania, Cuba, Brazil</div>
+          <div class="cred-item cred-item--light">Summit: Uhuru Peak, Mt. Kilimanjaro — 19,341 ft</div>
+        </div>
+        <div style="margin-top: 2.5rem;">
+          <a href="work.html" class="btn btn--gold-ghost">Full Experience &amp; Work</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SERVICES ══ -->
+  <section class="section section--light" id="services">
+    <div class="section-inner">
+      <p class="section-label reveal">What I Offer</p>
+      <h2 class="section-heading reveal">The <em>Work</em></h2>
+      <p class="section-subhead reveal">Consulting, facilitation, and education at the intersection of scholarship and lived experience</p>
+      <div class="card-grid card-grid--3 reveal">
+        <div class="card">
+          <div class="card-number">01</div>
+          <div class="card-title">Consulting</div>
+          <p class="card-body">Strategic advisory services for faith communities, educational institutions, nonprofits, and corporate clients. Engagements range from single-session strategy to long-term advisory relationships — in-person, virtually, or hybrid.</p>
+          <p class="card-detail">Individual · Organizational · Executive</p>
+        </div>
+        <div class="card">
+          <div class="card-number">02</div>
+          <div class="card-title">Facilitation &amp; Training</div>
+          <p class="card-body">Transformative facilitation grounded in justice-centered pedagogy, liberation theology, and community organizing principles. Addressing race, gender, and power in organizations; leadership rooted in the Beloved Community; conflict transformation.</p>
+          <p class="card-detail">Workshop · Immersive · Retreat</p>
+        </div>
+        <div class="card">
+          <div class="card-number">03</div>
+          <div class="card-title">Speaking &amp; Writing</div>
+          <p class="card-body">Keynote addresses, sermons, lectures, and scholarly work at the convergence of theology, education, race, and liberation. A voice that moves from the particular to the universal — grounded in story, rigorous in analysis.</p>
+          <p class="card-detail">Keynote · Preaching · Publication</p>
+        </div>
+      </div>
+      <div style="margin-top: 3rem; text-align: center;">
+        <a href="work.html" class="btn btn--ghost">See Full Experience</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- ══ UHURU TEASER ══ -->
+  <section class="uhuru-teaser" id="framework">
+    <div class="uhuru-teaser-inner">
+      <div class="reveal">
+        <p class="section-label section-label--gold">A Proprietary Model</p>
+        <h2 class="section-heading section-heading--light" style="font-size: clamp(2.2rem,4vw,3.5rem);">
+          The UHURU Framework™
+        </h2>
+        <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; font-size:1.15rem; line-height:1.65; color:rgba(240,232,216,0.72); margin-bottom:1.8rem;">
+          A mountain-based model for change, challenge, and transition — drawn from the five climate zones of Mt. Kilimanjaro.
+        </p>
+        <p class="t-body t-body--light" style="margin-bottom:1rem;">
+          <em style="color:var(--gold-light);">Uhuru</em> — the Swahili word for freedom — names both the summit Wesley reached in 2017 and the destination of every transformational journey he guides. At 5,895 meters, the climb required moving through five distinct zones, in the dark, toward a place not yet visible.
+        </p>
+        <p class="t-body t-body--light" style="margin-bottom:2.5rem;">
+          That ascent became the architecture of a change model refined across pastoral, organizational, and educational contexts for nearly a decade.
+        </p>
+        <a href="framework.html" class="btn btn--gold-ghost">Explore the Framework</a>
+      </div>
+      <div class="reveal">
+        <div class="blockquote-styled" style="margin-bottom: 2.5rem;">
+          <blockquote>"Getting to the peak requires an appreciation of the dark as we move to a place we cannot yet see."</blockquote>
+          <cite>— Wesley J. Morris</cite>
+        </div>
+        <div class="zones-grid" style="grid-template-columns: 1fr; border:none; gap:0;">
+          <div style="display:flex; gap:1.2rem; align-items:flex-start; padding:0.8rem 0; border-bottom:1px solid rgba(201,151,43,0.12);">
+            <span class="zone-letter" style="font-size:2rem; min-width:30px;">U</span>
+            <div>
+              <div class="zone-name">Uncover &mdash; <span class="zone-terrain" style="display:inline;">The Rainforest</span></div>
+              <p class="zone-desc">Build the container. Name what is carried.</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:1.2rem; align-items:flex-start; padding:0.8rem 0; border-bottom:1px solid rgba(201,151,43,0.12);">
+            <span class="zone-letter" style="font-size:2rem; min-width:30px;">H</span>
+            <div>
+              <div class="zone-name">Hold &mdash; <span class="zone-terrain" style="display:inline;">The Moorland</span></div>
+              <p class="zone-desc">The hidden becomes visible. Hold the space.</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:1.2rem; align-items:flex-start; padding:0.8rem 0; border-bottom:1px solid rgba(201,151,43,0.12);">
+            <span class="zone-letter" style="font-size:2rem; min-width:30px;">U</span>
+            <div>
+              <div class="zone-name">Unbind &mdash; <span class="zone-terrain" style="display:inline;">The Semi-Desert</span></div>
+              <p class="zone-desc">The paradox zone. <em style="color:rgba(201,151,43,0.7)">Pole pole.</em></p>
+            </div>
+          </div>
+          <div style="display:flex; gap:1.2rem; align-items:flex-start; padding:0.8rem 0; border-bottom:1px solid rgba(201,151,43,0.12);">
+            <span class="zone-letter" style="font-size:2rem; min-width:30px;">R</span>
+            <div>
+              <div class="zone-name">Rise &mdash; <span class="zone-terrain" style="display:inline;">The Alpine Desert</span></div>
+              <p class="zone-desc">The wall was climbable. Terror was real.</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:1.2rem; align-items:flex-start; padding:0.8rem 0;">
+            <span class="zone-letter" style="font-size:2rem; min-width:30px;">U</span>
+            <div>
+              <div class="zone-name">Uhuru &mdash; <span class="zone-terrain" style="display:inline;">The Summit</span></div>
+              <p class="zone-desc">The midnight push. Then Stella Point. Freedom.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ REACH STATS ══ -->
+  <section class="section section--parchment">
+    <div class="section-inner">
+      <p class="section-label reveal">Global Practice</p>
+      <h2 class="section-heading reveal">Locally rooted.<br /><em>Globally informed.</em></h2>
+      <div class="stat-grid stat-grid--4 reveal">
+        <div class="stat-cell">
+          <div class="stat-number">20+</div>
+          <div class="stat-label">Years of Practice</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">4</div>
+          <div class="stat-label">Continents</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">19,341 ft</div>
+          <div class="stat-label">Uhuru Peak Summit</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">∞</div>
+          <div class="stat-label">Capacity for Transformation</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CONTACT ══ -->
+  <section class="contact-home" id="contact">
+    <div class="contact-home-inner">
+      <div class="reveal">
+        <p class="t-eyebrow t-eyebrow--gold" style="margin-bottom:1.5rem;">Let's Work Together</p>
+        <h2 class="contact-tagline">Begin the<br /><em>Conversation</em></h2>
+        <p class="t-body t-body--light">
+          Whether you are an organization navigating change, a faith community seeking deeper grounding, an institution in need of strategic facilitation, or an individual ready to begin the climb — the door is open.
+        </p>
+        <p class="t-body t-body--light" style="margin-top:1rem; margin-bottom:2rem;">
+          All engagements are available in-person, virtually, or in hybrid formats. National and international travel is available for select engagements.
+        </p>
+        <div class="cred-list">
+          <div class="cred-item cred-item--light">Greensboro, NC (Primary)</div>
+          <div class="cred-item cred-item--light">National &amp; International Engagements Available</div>
+          <div class="cred-item cred-item--light">Wesley J. Morris LLC — Delaware LLC</div>
+          <div class="cred-item cred-item--light">
+            <a href="mailto:brotherwes44@gmail.com" style="color:inherit; text-decoration:underline; text-decoration-color: rgba(201,151,43,0.4);">brotherwes44@gmail.com</a>
+          </div>
+          <div class="cred-item cred-item--light">
+            <a href="https://faithccgso.org" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline; text-decoration-color: rgba(201,151,43,0.4);">Faith Community Church — faithccgso.org</a>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <!-- Netlify form — add netlify attribute for form detection -->
+        <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="contact-form" id="contact-form">
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="form-group" style="display:none;">
+            <label>Don't fill this out: <input name="bot-field" /></label>
+          </p>
+          <div class="form-group">
+            <label class="form-label" for="name">Your Name</label>
+            <input type="text" id="name" name="name" class="form-input" placeholder="Full name" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="org">Organization (if applicable)</label>
+            <input type="text" id="org" name="organization" class="form-input" placeholder="Organization or Institution" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="engagement">Type of Engagement</label>
+            <select id="engagement" name="engagement" class="form-select">
+              <option value="">Select one...</option>
+              <option>Consulting</option>
+              <option>Facilitation / Training</option>
+              <option>Speaking / Keynote</option>
+              <option>UHURU Framework™</option>
+              <option>Writing / Publication</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Message</label>
+            <textarea id="message" name="message" class="form-textarea" placeholder="Tell me about your context and what you're hoping for..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn--gold" style="border:none; align-self:flex-start; margin-top:0.5rem;">Send Inquiry</button>
+        </form>
+        <div id="form-success">
+          Thank you. Your message has been received — Wesley will be in touch soon.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="site-footer">
+    <span class="footer-brand">Wesley J. Morris LLC</span>
+    <ul class="footer-links">
+      <li><a href="work.html">Work</a></li>
+      <li><a href="framework.html">UHURU</a></li>
+      <li><a href="blog.html">Writing</a></li>
+      <li><a href="https://medium.com/@Brother_Wes" target="_blank" rel="noopener">Medium</a></li>
+      <li><a href="https://faithccgso.org" target="_blank" rel="noopener">Faith CC</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 Wesley J. Morris LLC. All rights reserved.</span>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Nav scroll shadow
+    window.addEventListener('scroll', () => {
+      document.getElementById('main-nav').style.boxShadow =
+        window.scrollY > 40 ? '0 2px 24px rgba(26,16,8,0.1)' : 'none';
+    });
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      const open = navLinks.classList.contains('open');
+      hamburger.setAttribute('aria-expanded', open);
+    });
+
+    // Netlify form (fallback for JS environments)
+    const form = document.getElementById('contact-form');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        // Let Netlify handle real submission; show success for local preview
+        if (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost' || window.location.protocol === 'file:') {
+          e.preventDefault();
+          form.style.display = 'none';
+          document.getElementById('form-success').style.display = 'block';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Proprietary frameworks by Wesley J. Morris — UHURU, The Luminous Dark, and The Friendship Doctrine." />
+  <title>Frameworks — Wesley J. Morris</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    /* ── Framework-specific ── */
+
+    /* In-page jump nav */
+    .framework-jump-nav {
+      background: var(--parchment-light);
+      border-bottom: 1px solid rgba(139,69,19,0.12);
+      padding: 1.1rem 3rem;
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      position: sticky;
+      top: 62px;
+      z-index: 90;
+    }
+    .framework-jump-nav a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(61,43,31,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .framework-jump-nav a:hover,
+    .framework-jump-nav a.active { color: var(--copper); }
+    .framework-jump-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(61,43,31,0.28);
+      flex-shrink: 0;
+    }
+
+    /* Zone cards (UHURU) */
+    .zone-full-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      border: 1px solid rgba(201,151,43,0.15);
+    }
+    .zone-full-card {
+      padding: 3rem 3.5rem;
+      border-bottom: 1px solid rgba(201,151,43,0.12);
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 3rem;
+      align-items: start;
+      transition: background 0.3s;
+    }
+    .zone-full-card:last-child { border-bottom: none; }
+    .zone-full-card:hover { background: rgba(201,151,43,0.04); }
+    .zone-full-left { text-align: center; }
+    .zone-full-letter {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5.5rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+    }
+    .zone-full-num {
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+      color: rgba(201,151,43,0.45);
+      text-transform: uppercase;
+    }
+    .zone-full-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+      color: var(--gold-light);
+      margin-bottom: 0.3rem;
+    }
+    .zone-full-terrain {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: rgba(201,151,43,0.55);
+      margin-bottom: 1.2rem;
+    }
+    .zone-full-body {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: rgba(240,232,216,0.72);
+    }
+    .zone-full-body p { margin-bottom: 0.9rem; }
+    .zone-full-prompt {
+      margin-top: 1.2rem;
+      padding: 1rem 1.5rem;
+      border-left: 2px solid rgba(201,151,43,0.3);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: rgba(201,151,43,0.7);
+      line-height: 1.6;
+    }
+
+    /* Two-col for framework origin sections */
+    .origin-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    /* Stage cards for Luminous Dark & Friendship Doctrine */
+    .stage-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      border: 1px solid rgba(201,151,43,0.15);
+      margin-top: 3rem;
+    }
+    .stage-card {
+      padding: 2.8rem 3.2rem;
+      border-bottom: 1px solid rgba(201,151,43,0.1);
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+      transition: background 0.3s;
+    }
+    .stage-card:last-child { border-bottom: none; }
+    .stage-card:hover { background: rgba(201,151,43,0.04); }
+    .stage-num-block { text-align: center; }
+    .stage-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: rgba(201,151,43,0.5);
+      line-height: 1;
+      display: block;
+    }
+    .stage-num-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.5rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(201,151,43,0.3);
+    }
+    .stage-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 0.3rem;
+    }
+    .stage-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(240,232,216,0.55);
+      margin-bottom: 0.9rem;
+    }
+    .stage-body {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: rgba(240,232,216,0.65);
+    }
+    .stage-question {
+      margin-top: 1rem;
+      padding: 0.8rem 1.2rem;
+      border-left: 2px solid rgba(201,151,43,0.25);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      font-style: italic;
+      color: rgba(201,151,43,0.6);
+      line-height: 1.6;
+    }
+
+    /* Conviction list */
+    .conviction-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem 3rem;
+      margin-top: 2.5rem;
+    }
+    .conviction-item {}
+    .conviction-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: rgba(201,151,43,0.35);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .conviction-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+    .conviction-body {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: rgba(240,232,216,0.58);
+    }
+
+    /* Format pills */
+    .format-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 0;
+      border: 1px solid rgba(201,151,43,0.15);
+      margin-top: 2.5rem;
+    }
+    .format-card {
+      padding: 2rem 1.8rem;
+      border-right: 1px solid rgba(201,151,43,0.12);
+    }
+    .format-card:last-child { border-right: none; }
+    .format-icon { font-size: 1.3rem; margin-bottom: 0.8rem; }
+    .format-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+    .format-desc {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.85rem;
+      line-height: 1.75;
+      color: rgba(240,232,216,0.55);
+    }
+
+    /* Inquiry CTA (shared) */
+    .framework-inquiry {
+      margin-top: 4rem;
+      padding: 3rem 3.5rem;
+      border: 1px solid rgba(201,151,43,0.2);
+      background: rgba(201,151,43,0.04);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 3rem;
+    }
+    .framework-inquiry-text {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: rgba(240,232,216,0.65);
+      line-height: 1.7;
+    }
+
+    /* Section divider with title */
+    .framework-divider {
+      padding: 5rem 3rem 0;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .framework-divider-rule {
+      border: none;
+      border-top: 1px solid rgba(201,151,43,0.15);
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 900px) {
+      .framework-jump-nav { padding: 1rem 1.5rem; gap: 1.5rem; overflow-x: auto; }
+      .zone-full-card { grid-template-columns: 1fr; gap: 1rem; padding: 2.5rem 2rem; }
+      .zone-full-left { text-align: left; display: flex; align-items: center; gap: 1rem; }
+      .zone-full-letter { font-size: 3.5rem; }
+      .stage-card { grid-template-columns: 1fr; gap: 0.8rem; padding: 2rem 1.5rem; }
+      .stage-num-block { text-align: left; display: flex; align-items: center; gap: 0.8rem; }
+      .stage-num { font-size: 2.5rem; }
+      .origin-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .conviction-list { grid-template-columns: 1fr; }
+      .format-grid { grid-template-columns: 1fr; }
+      .format-card { border-right: none; border-bottom: 1px solid rgba(201,151,43,0.12); }
+      .framework-inquiry { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAV ══ -->
+  <nav id="main-nav">
+    <a href="index.html" class="nav-brand">Wesley J. Morris</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="framework.html" class="active">UHURU</a></li>
+      <li><a href="blog.html">Writing</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ══ PAGE HEADER ══ -->
+  <header class="page-header" data-watermark="FRAMEWORKS" style="background: var(--charcoal);">
+    <div class="page-header-inner">
+      <p class="t-eyebrow t-eyebrow--gold">Proprietary Models</p>
+      <h1 class="t-display t-display--light" style="font-size: clamp(2.5rem, 5vw, 5.5rem);">Frameworks</h1>
+      <p class="page-header-sub">
+        Three frameworks developed over two decades of practice — each born from a specific place, a specific moment, and a specific conviction about how transformation actually happens.
+      </p>
+    </div>
+  </header>
+
+  <!-- ══ In-page jump nav ══ -->
+  <div class="framework-jump-nav">
+    <span class="framework-jump-label">Jump to:</span>
+    <a href="#uhuru">UHURU Framework™</a>
+    <a href="#luminous-dark">The Luminous Dark</a>
+    <a href="#friendship-doctrine">The Friendship Doctrine</a>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       FRAMEWORK 1 — UHURU
+  ══════════════════════════════════════════════ -->
+
+  <section class="section section--dark" id="uhuru">
+    <div class="section-inner">
+      <div class="origin-grid reveal">
+        <div>
+          <p class="section-label section-label--gold">Framework One</p>
+          <h2 class="section-heading section-heading--light">
+            The UHURU<br /><em style="color:var(--gold-light);">Framework™</em>
+          </h2>
+          <p style="font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.3em; text-transform:uppercase; color:rgba(201,151,43,0.5); margin-bottom:1.5rem;">A Mountain-Based Model for Change</p>
+          <div class="t-body t-body--light" style="margin-bottom:1rem;">
+            <p><em style="color:var(--gold-light);">Uhuru</em> — the Swahili word for freedom — is the name of the summit of Mt. Kilimanjaro and the destination of Wesley's 2017 climb via the Machame Route. At 19,341 ft, reaching Uhuru required moving through five distinct climate zones, in the dark, toward a place they could not yet see.</p>
+          </div>
+          <div class="t-body t-body--light" style="margin-bottom:1rem;">
+            <p>That climb became the architecture of a change model Wesley has spent years developing and refining across pastoral, organizational, and educational contexts. The word <em style="color:var(--gold-light);">pole pole</em> (poh-lay poh-lay) — "slowly, slowly" — became a mantra on the mountain and a gift for every transformational journey since.</p>
+          </div>
+        </div>
+        <div>
+          <div class="blockquote-styled" style="margin-bottom: 2rem;">
+            <blockquote>"Getting to the peak requires an appreciation of the dark as we move to a place we cannot yet see."</blockquote>
+            <cite>— Wesley J. Morris</cite>
+          </div>
+          <div class="t-body t-body--light">
+            <p>The UHURU Framework™ is not a linear ladder. It is a terrain-responsive map for individuals, organizations, and communities navigating profound change.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#1e150b; padding: 3rem 3rem 5rem;" id="uhuru-zones">
+    <div class="section-inner">
+      <p class="section-label section-label--gold reveal" style="margin-bottom:1.5rem;">The Five Zones</p>
+      <div class="zone-full-grid reveal">
+
+        <div class="zone-full-card">
+          <div class="zone-full-left">
+            <span class="zone-full-letter">U</span>
+            <span class="zone-full-num">Zone 01</span>
+          </div>
+          <div>
+            <div class="zone-full-name">Uncover</div>
+            <div class="zone-full-terrain">The Rainforest — Dense, humid, alive</div>
+            <div class="zone-full-body">
+              <p>The container-building phase. The work here is naming what is carried: the histories, the wounds, the assumptions, the grief. The facilitator's task is to help people recognize what they are actually working with before beginning to work with it.</p>
+            </div>
+            <div class="zone-full-prompt">Guiding question: <em>What are we actually carrying into this?</em></div>
+          </div>
+        </div>
+
+        <div class="zone-full-card">
+          <div class="zone-full-left">
+            <span class="zone-full-letter">H</span>
+            <span class="zone-full-num">Zone 02</span>
+          </div>
+          <div>
+            <div class="zone-full-name">Hold</div>
+            <div class="zone-full-terrain">The Moorland — Open, exposed, wind-swept</div>
+            <div class="zone-full-body">
+              <p>The Moorland is where cover is gone and full exposure of the terrain becomes visible. The hidden becomes seen — and this is exactly where fear, deception, and unexpressed anger surface. The central task is to hold the space without rushing it.</p>
+            </div>
+            <div class="zone-full-prompt">Guiding question: <em>Can we hold this without collapsing or escaping?</em></div>
+          </div>
+        </div>
+
+        <div class="zone-full-card">
+          <div class="zone-full-left">
+            <span class="zone-full-letter">U</span>
+            <span class="zone-full-num">Zone 03</span>
+          </div>
+          <div>
+            <div class="zone-full-name">Unbind</div>
+            <div class="zone-full-terrain">The Semi-Desert — The paradox zone</div>
+            <div class="zone-full-body">
+              <p>The most paradoxical terrain on the mountain. The Machame Route descends here before it ascends — a move that looks, from the outside, like retreat or failure. <em style="color:rgba(201,151,43,0.7)">Pole pole.</em> This is where acclimatization happens. What appears to be regression is often the most critical preparation for the climb ahead.</p>
+            </div>
+            <div class="zone-full-prompt">Guiding question: <em>What must be released so the ascent can happen?</em></div>
+          </div>
+        </div>
+
+        <div class="zone-full-card">
+          <div class="zone-full-left">
+            <span class="zone-full-letter">R</span>
+            <span class="zone-full-num">Zone 04</span>
+          </div>
+          <div>
+            <div class="zone-full-name">Rise</div>
+            <div class="zone-full-terrain">The Alpine Desert — The Barranco Wall</div>
+            <div class="zone-full-body">
+              <p>The Alpine Desert culminates in the Barranco Wall — a sheer volcanic rock face that appears impassable from below. Once you are on it, it becomes navigable. One handhold at a time. The terror was real. The wall was climbable. Both things are true.</p>
+            </div>
+            <div class="zone-full-prompt">Guiding question: <em>What does the path forward actually look like from here?</em></div>
+          </div>
+        </div>
+
+        <div class="zone-full-card">
+          <div class="zone-full-left">
+            <span class="zone-full-letter">U</span>
+            <span class="zone-full-num">Zone 05</span>
+          </div>
+          <div>
+            <div class="zone-full-name">Uhuru</div>
+            <div class="zone-full-terrain">The Summit — 19,341 ft</div>
+            <div class="zone-full-body">
+              <p>The final push begins at midnight. Six hours in darkness. The air is thin. The summit is invisible. But the climber has been in the dark before — and has learned to move toward a place not yet seen. Then: Stella Point. The crater rim. The first light of dawn. Freedom.</p>
+            </div>
+            <div class="zone-full-prompt">Guiding question: <em>What do we carry back with us from the summit?</em></div>
+          </div>
+        </div>
+
+      </div>
+      <div class="framework-inquiry reveal">
+        <div class="framework-inquiry-text">The UHURU Framework™ is available for organizational retreats, individual coaching, faith community formation, and educational settings. Engagements range from a single-session introduction to extended accompaniment processes.</div>
+        <a href="index.html#contact" class="btn btn--gold" style="white-space:nowrap; flex-shrink:0; border:none;">Inquire About UHURU</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       FRAMEWORK 2 — THE LUMINOUS DARK
+  ══════════════════════════════════════════════ -->
+
+  <hr style="border:none; border-top:1px solid rgba(201,151,43,0.1); margin:0;" />
+
+  <section class="section section--dark" id="luminous-dark" style="padding-bottom: 2rem;">
+    <div class="section-inner">
+      <div class="origin-grid reveal">
+        <div>
+          <p class="section-label section-label--gold">Framework Two</p>
+          <h2 class="section-heading section-heading--light">
+            The Luminous<br /><em style="color:var(--gold-light);">Dark™</em>
+          </h2>
+          <p style="font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.3em; text-transform:uppercase; color:rgba(201,151,43,0.5); margin-bottom:1.5rem;">A Personal Development &amp; Consciousness-Raising Journey</p>
+          <div class="t-body t-body--light" style="margin-bottom:1rem;">
+            <p>There is a place in western Belize — deep in the limestone hills of the Cayo District — where the dark is not simply the absence of light. It is a presence. Wesley Morris entered that cave as part of a journey through the ancient underground river system at Jaguar Paw. Approximately a quarter of a mile in, the guide gave the instruction: turn off your headlamp.</p>
+          </div>
+          <div class="t-body t-body--light" style="margin-bottom:1rem;">
+            <p>What followed was unlike any darkness he had experienced above ground. This darkness had texture. It pressed against the skin. It was palpable — a darkness that could be felt, not just seen. And in that darkness, Wesley Morris did not experience fear. He experienced comfort.</p>
+          </div>
+          <div class="t-body t-body--light" style="margin-bottom:1.5rem;">
+            <p>That moment became the origin of a conviction: <em style="color:var(--gold-light);">the darkness is not the enemy of growth. It is one of its most honest and most generative conditions.</em> The Luminous Dark is built from that moment.</p>
+          </div>
+          <div class="cred-list">
+            <div class="cred-item cred-item--light">8-week cohort journey — groups of 4–10</div>
+            <div class="cred-item cred-item--light">6-session individual intensive</div>
+            <div class="cred-item cred-item--light">8-session couples intensive</div>
+            <div class="cred-item cred-item--light">Organizational cohort available</div>
+          </div>
+        </div>
+        <div>
+          <div class="blockquote-styled" style="margin-bottom: 2rem;">
+            <blockquote>"The luminous dark is not darkness escaped. It is darkness inhabited fully enough to reveal what was always shining inside it."</blockquote>
+            <cite>— Wesley J. Morris, The Luminous Dark™</cite>
+          </div>
+          <p style="font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold-light); margin-bottom:1.2rem;">For Leaders · Professionals · Couples</p>
+          <div class="t-body t-body--light">
+            <p>You have built things. You have achieved things. And you are aware — perhaps more acutely than the people around you — that your external accomplishments have outpaced your internal development. This journey is not away from the dark. It is through it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#1e150b; padding: 1rem 3rem 3rem;" id="luminous-dark-stages">
+    <div class="section-inner">
+      <p class="section-label section-label--gold reveal" style="margin-bottom:0.5rem;">The Six Stages</p>
+      <p style="font-family:'Crimson Pro',serif; font-style:italic; font-size:0.95rem; color:rgba(240,232,216,0.45); margin-bottom:1.5rem; font-weight:300;">Each stage corresponds to a chamber in the Belize cave system — a specific quality of darkness, a specific gift, a specific practice.</p>
+      <div class="stage-grid reveal">
+
+        <div class="stage-card">
+          <div class="stage-num-block">
+            <span class="stage-num">1</span>
+            <span class="stage-num-label">Stage</span>
+          </div>
+          <div>
+            <div class="stage-title">The Descent</div>
+            <div class="stage-subtitle">Entering the Dark</div>
+            <p class="stage-body">The moment the headlamp goes off. The willingness to stop performing, stop explaining, and stop managing the image of yourself long enough to encounter what is actually present. Stage 1 does not require resolution. It requires only presence.</p>
+            <div class="stage-question"><em>Who are you when no one is watching?</em></div>
+          </div>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-num-block">
+            <span class="stage-num">2</span>
+            <span class="stage-num-label">Stage</span>
+          </div>
+          <div>
+            <div class="stage-title">The Cold House</div>
+            <div class="stage-subtitle">The Limits of Certainty</div>
+            <p class="stage-body">The stage of isolation — the discovery that the certainties you brought into the dark do not function here. The theologies that worked in the light, the relational scripts that held in easier seasons — in the cold of Stage 2, they rattle. They do not warm you.</p>
+            <div class="stage-question"><em>What did you believe before you entered the dark that you are no longer sure about?</em></div>
+          </div>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-num-block">
+            <span class="stage-num">3</span>
+            <span class="stage-num-label">Stage</span>
+          </div>
+          <div>
+            <div class="stage-title">The Jaguar House</div>
+            <div class="stage-subtitle">What Can See You in the Dark</div>
+            <p class="stage-body">The Jaguar House is the stage of being seen — by your own patterns, your own wounds, your own history, and the systems that formed you. The jaguar sees in the dark with perfect clarity. It does not need your headlamp.</p>
+            <div class="stage-question"><em>What has been shaping you in the dark that you are only now beginning to name?</em></div>
+          </div>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-num-block">
+            <span class="stage-num">4</span>
+            <span class="stage-num-label">Stage</span>
+          </div>
+          <div>
+            <div class="stage-title">The Bat House</div>
+            <div class="stage-subtitle">Chaos and the Threshold Moment</div>
+            <p class="stage-body">Disorienting, loud, moving in every direction at once. The liminal stage: the old self has been sufficiently dismantled that its familiar certainties are gone, but the new self has not yet fully formed. This is the threshold — the most dangerous and most generative point in the journey.</p>
+            <div class="stage-question"><em>What is being born in you that requires this chaos to exist?</em></div>
+          </div>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-num-block">
+            <span class="stage-num">5</span>
+            <span class="stage-num-label">Stage</span>
+          </div>
+          <div>
+            <div class="stage-title">The Razor House</div>
+            <div class="stage-subtitle">The Cost of Transformation</div>
+            <p class="stage-body">The stage of discernment and release — the honest reckoning with what must be cut away in order for genuine transformation to occur. Not everything survives the journey through the dark. Not everything should. Stage 5 is where participants discover how much lighter they are capable of being.</p>
+            <div class="stage-question"><em>What is the difference between what you are being asked to release and what you actually are?</em></div>
+          </div>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-num-block">
+            <span class="stage-num">6</span>
+            <span class="stage-num-label">Stage</span>
+          </div>
+          <div>
+            <div class="stage-title">The Luminous Dark</div>
+            <div class="stage-subtitle">Emergence and Integration</div>
+            <p class="stage-body">Stage 6 is not the end of darkness. It is the stage in which the participant has learned to see from within it. The cave is not left behind — it is carried forward as a source of authority and wisdom. The quiet authority of someone who has been somewhere real and come back with something true.</p>
+            <div class="stage-question"><em>Who is waiting for your testimony?</em></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="framework-inquiry reveal">
+        <div class="framework-inquiry-text">The Luminous Dark is available as an 8-week group cohort (4–10 participants), a 6-session individual intensive, or an 8-session couples journey. Sliding scale and organizational cohort pricing available.</div>
+        <a href="index.html#contact" class="btn btn--gold" style="white-space:nowrap; flex-shrink:0; border:none;">Inquire About The Luminous Dark</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       FRAMEWORK 3 — THE FRIENDSHIP DOCTRINE
+  ══════════════════════════════════════════════ -->
+
+  <hr style="border:none; border-top:1px solid rgba(201,151,43,0.1); margin:0;" />
+
+  <section class="section section--dark" id="friendship-doctrine" style="padding-bottom: 2rem;">
+    <div class="section-inner">
+      <div class="origin-grid reveal">
+        <div>
+          <p class="section-label section-label--gold">Framework Three</p>
+          <h2 class="section-heading section-heading--light">
+            The Friendship<br /><em style="color:var(--gold-light);">Doctrine™</em>
+          </h2>
+          <p style="font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.3em; text-transform:uppercase; color:rgba(201,151,43,0.5); margin-bottom:1.5rem;">Community Organizing &amp; Mass Movement Building</p>
+          <div class="t-body t-body--light" style="margin-bottom:1rem;">
+            <p>Wesley Morris was on a community farm in Havana, Cuba, with the Venceremos Brigade. He asked a farmer the question any student of social transformation would ask: how did you make the revolution of 1959?</p>
+          </div>
+          <div class="t-body t-body--light" style="margin-bottom:1rem;">
+            <p>He expected strategy. Tactics. Armed resistance. The farmer gave him a different answer entirely: <em style="color:var(--gold-light);">"It was all based on friendship and solidarity. Everything else — strategy, tactics, defense — everything flowed from those two things."</em></p>
+          </div>
+          <div class="t-body t-body--light" style="margin-bottom:1.5rem;">
+            <p>That answer — from a Cuban farmer to a Black pastor and community organizer from Greensboro, NC — is the origin of The Friendship Doctrine. A framework that holds: you cannot build a movement from strangers. You build it from friends. You cannot sustain a movement from self-interest. You sustain it from solidarity.</p>
+          </div>
+          <div class="cred-list">
+            <div class="cred-item cred-item--light">Rooted in Ella Baker, Fannie Lou Hamer, Paulo Freire</div>
+            <div class="cred-item cred-item--light">Highlander Folk School method of popular education</div>
+            <div class="cred-item cred-item--light">Liberation Theology of base Christian communities</div>
+            <div class="cred-item cred-item--light">Cuban Literacy Campaign teacher-organizer model</div>
+          </div>
+        </div>
+        <div>
+          <div class="blockquote-styled" style="margin-bottom: 2rem;">
+            <blockquote>"It was all based on friendship and solidarity. Everything else flowed from those two things."</blockquote>
+            <cite>— A farmer in Havana, Cuba, to Wesley J. Morris</cite>
+          </div>
+          <p style="font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold-light); margin-bottom:1.2rem;">For Organizers · Coalitions · Young Leaders · Communities</p>
+          <div class="t-body t-body--light">
+            <p>The most common failure of organizing campaigns — the reason coalitions collapse, campaigns stall, and movements burn out — is the attempt to build at Stages 4 or 5 without having done the work of Stages 1 and 2. The farmer said it plainly. The framework simply names what he knew.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#1e150b; padding: 1rem 3rem 3rem;" id="friendship-doctrine-stages">
+    <div class="section-inner">
+      <p class="section-label section-label--gold reveal" style="margin-bottom:0.5rem;">The Five Stages</p>
+      <p style="font-family:'Crimson Pro',serif; font-style:italic; font-size:0.95rem; color:rgba(240,232,216,0.45); margin-bottom:1.5rem; font-weight:300;">Sequential and cumulative. Each stage builds on the one before. No stage can be skipped without weakening the entire structure.</p>
+      <div class="stage-grid reveal">
+
+        <div class="stage-card">
+          <div class="stage-num-block">
+            <span class="stage-num">1</span>
+            <span class="stage-num-label">Stage</span>
+          </div>
+          <div>
+            <div class="stage-title">Amistad — Friendship</div>
+            <div class="stage-subtitle">The Ground of Everything</div>
+            <p class="stage-body">Relationship built through presence, listening, shared story, and time. Friendship is not an instrument of organizing — it is its irreducible foundation. "Strong people don't need strong leaders." — Ella Baker. The organizer at Stage 1 is primarily a learner. Her primary tool is the one-on-one conversation: I want to know your story, your concern, your vision.</p>
+            <div class="stage-question"><em>Who in this community do you not yet know — and what would it take to show up in their world this week?</em></div>
+          </div>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-num-block">
+            <span class="stage-num">2</span>
+            <span class="stage-num-label">Stage</span>
+          </div>
+          <div>
+            <div class="stage-title">Solidaridad — Solidarity</div>
+            <div class="stage-subtitle">Love as Willingness to Sacrifice</div>
+            <p class="stage-body">Solidarity is not agreement. It is not uniformity. It is the prior commitment that says: whatever happens next, I am acting on your behalf. bell hooks, interpreting M. Scott Peck: love is the will to extend one's self for the purpose of nurturing the spiritual growth of another. Solidarity is love in its political and organizational form.</p>
+            <div class="stage-question"><em>In whose struggle are you willing to act even when it costs you something?</em></div>
+          </div>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-num-block">
+            <span class="stage-num">3</span>
+            <span class="stage-num-label">Stage</span>
+          </div>
+          <div>
+            <div class="stage-title">Alfabetización — Literacy</div>
+            <div class="stage-subtitle">The Teacher-Organizer</div>
+            <p class="stage-body">The Cuban Literacy Campaign of 1961 mobilized 250,000 young teachers to live with the families they taught — building friendships that made learning possible. The relationship was the curriculum. The organizer is always also a teacher. The work of raising consciousness — building the literacy of liberation — is not separate from the work of building power. It is its foundation.</p>
+            <div class="stage-question"><em>What does this community need to be able to name, read, and analyze in order to act on its own behalf?</em></div>
+          </div>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-num-block">
+            <span class="stage-num">4</span>
+            <span class="stage-num-label">Stage</span>
+          </div>
+          <div>
+            <div class="stage-title">Movimiento — Movement</div>
+            <div class="stage-subtitle">The Organized Expression of Friendship at Scale</div>
+            <p class="stage-body">Movement is friendship and solidarity organized. It is what happens when the relational work of Stages 1 and 2 and the consciousness-raising work of Stage 3 find a shared object, a shared demand, and a shared strategy. Movement without the prior stages is mobilization — it can be impressive in the short run and exhausted in the long one.</p>
+            <div class="stage-question"><em>What shared demand can this community now make together that none of its members could make alone?</em></div>
+          </div>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-num-block">
+            <span class="stage-num">5</span>
+            <span class="stage-num-label">Stage</span>
+          </div>
+          <div>
+            <div class="stage-title">Revolución — Revolution</div>
+            <div class="stage-subtitle">Ongoing Structural Transformation</div>
+            <p class="stage-body">Not revolution as event, but as ongoing, sustained, structural transformation of the conditions that make suffering possible. Revolution in The Friendship Doctrine is not the overthrow — it is the long work that follows. The farmer's revolution did not end in 1959. It required decades of literacy campaigns, community building, and sustained solidarity to become what it became.</p>
+            <div class="stage-question"><em>What would it look like for this work to outlast everyone currently doing it?</em></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="framework-inquiry reveal">
+        <div class="framework-inquiry-text">The Friendship Doctrine is available for community organizing training, coalition-building workshops, young leader development programs, and faith-rooted social justice formation. Available as a single-day intensive, a multi-day immersive, or an extended cohort.</div>
+        <a href="index.html#contact" class="btn btn--gold" style="white-space:nowrap; flex-shrink:0; border:none;">Inquire About The Friendship Doctrine</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="site-footer">
+    <span class="footer-brand">Wesley J. Morris LLC</span>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="blog.html">Writing</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="https://faithccgso.org" target="_blank" rel="noopener">Faith CC</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 Wesley J. Morris LLC. All rights reserved.</span>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    window.addEventListener('scroll', () => {
+      document.getElementById('main-nav').style.boxShadow = window.scrollY > 40 ? '0 2px 24px rgba(26,16,8,0.1)' : 'none';
+    });
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('nav-links').classList.toggle('open');
+    });
+
+    // Highlight active jump-nav link on scroll
+    const sections = [
+      { id: 'uhuru', link: 0 },
+      { id: 'luminous-dark', link: 1 },
+      { id: 'friendship-doctrine', link: 2 }
+    ];
+    const jumpLinks = document.querySelectorAll('.framework-jump-nav a');
+    window.addEventListener('scroll', () => {
+      let current = 0;
+      sections.forEach((s, i) => {
+        const el = document.getElementById(s.id);
+        if (el && window.scrollY >= el.offsetTop - 120) current = i;
+      });
+      jumpLinks.forEach((l, i) => l.classList.toggle('active', i === current));
+    });
+  </script>
+</body>
+</html>
