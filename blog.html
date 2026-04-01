@@ -3,341 +3,183 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Writing, media, and publications by Wesley J. Morris — essays on faith, liberation, and transformation." />
-  <title>Writing &amp; Media — Wesley J. Morris</title>
+  <title>Writing &amp; Media &mdash; Wesley J. Morris</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" />
   <link rel="stylesheet" href="assets/styles.css" />
-  <style>
-    /* Featured piece */
-    .featured-piece {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      border: 1px solid rgba(139,69,19,0.15);
-      margin-bottom: 2px;
-      background: var(--parchment-light);
-      text-decoration: none;
-      color: inherit;
-      transition: background 0.25s;
-    }
-    .featured-piece:hover { background: #fff; }
-    .featured-tag {
-      font-family: 'Cinzel', serif;
-      font-size: 0.58rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--copper);
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-    .featured-tag::before {
-      content: '';
-      display: inline-block;
-      width: 18px; height: 1px;
-      background: var(--gold);
-    }
-    .featured-content { padding: 3.5rem; }
-    .featured-img-side {
-      background: rgba(61,43,31,0.07);
-      position: relative;
-      overflow: hidden;
-      min-height: 280px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    .featured-placeholder-icon { font-size: 2.5rem; opacity: 0.25; }
-    .featured-placeholder-text {
-      font-family: 'Cinzel', serif;
-      font-size: 0.58rem;
-      letter-spacing: 0.2em;
-      color: rgba(61,43,31,0.3);
-      text-transform: uppercase;
-    }
-    .featured-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      font-weight: 300;
-      color: var(--ink);
-      line-height: 1.25;
-      margin: 1rem 0;
-    }
-    .featured-excerpt {
-      font-family: 'Crimson Pro', serif;
-      font-size: 1rem;
-      line-height: 1.85;
-      color: rgba(61,43,31,0.68);
-      margin-bottom: 1.5rem;
-    }
-
-    /* Media appearance items */
-    .media-list { display: flex; flex-direction: column; gap: 0; }
-    .media-item {
-      padding: 1.8rem 0;
-      border-bottom: 1px solid rgba(139,69,19,0.1);
-      display: grid;
-      grid-template-columns: 130px 1fr;
-      gap: 2rem;
-      align-items: start;
-      text-decoration: none;
-      color: inherit;
-      transition: background 0.2s;
-    }
-    .media-item:first-child { border-top: 1px solid rgba(139,69,19,0.1); }
-    .media-item:hover { background: rgba(139,69,19,0.03); }
-    .media-type {
-      font-family: 'Cinzel', serif;
-      font-size: 0.58rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 0.3rem 0.7rem;
-      border: 1px solid rgba(139,69,19,0.25);
-      color: var(--copper-light);
-      display: inline-block;
-      text-align: center;
-    }
-    .media-type--podcast { border-color: rgba(201,151,43,0.35); color: var(--gold); }
-    .media-type--tv { border-color: rgba(139,69,19,0.4); color: var(--copper); }
-    .media-type--talk { border-color: rgba(44,31,20,0.3); color: var(--charcoal); }
-    .media-type--documentary { border-color: rgba(139,69,19,0.3); color: var(--earth); }
-    .media-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
-      font-weight: 300;
-      color: var(--ink);
-      margin-bottom: 0.3rem;
-      line-height: 1.35;
-    }
-    .media-item:hover .media-title { color: var(--copper); }
-    .media-desc {
-      font-family: 'Crimson Pro', serif;
-      font-size: 0.88rem;
-      color: rgba(61,43,31,0.6);
-      line-height: 1.65;
-    }
-    .media-link-hint {
-      font-family: 'Cinzel', serif;
-      font-size: 0.55rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--copper-light);
-      margin-top: 0.4rem;
-      opacity: 0.6;
-    }
-    .medium-cta {
-      background: var(--earth);
-      padding: 4rem 3rem;
-      display: flex;
-      align-items: center;
-      gap: 4rem;
-    }
-    .medium-cta-text h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      font-weight: 300;
-      color: var(--parchment-light);
-      margin-bottom: 0.8rem;
-    }
-    .medium-cta-text p {
-      font-family: 'Crimson Pro', serif;
-      font-size: 0.95rem;
-      line-height: 1.8;
-      color: rgba(240,232,216,0.65);
-    }
-    @media (max-width: 900px) {
-      .featured-piece { grid-template-columns: 1fr; }
-      .featured-img-side { min-height: 160px; order: -1; }
-      .featured-content { padding: 2.5rem; }
-      .media-item { grid-template-columns: 1fr; gap: 0.6rem; }
-      .medium-cta { flex-direction: column; gap: 2rem; align-items: flex-start; padding: 3rem 1.5rem; }
-    }
-  </style>
 </head>
 <body>
 
-  <!-- ══ NAV ══ -->
   <nav id="main-nav">
-    <a href="index.html" class="nav-brand">Wesley J. Morris</a>
+    <a href="/" class="nav-brand">Wesley J. Morris</a>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="work.html">Work</a></li>
-      <li><a href="framework.html">Frameworks</a></li>
-      <li><a href="blog.html" class="active">Writing</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/work">Work</a></li>
+      <li><a href="/framework">Frameworks</a></li>
+      <li><a href="/blog" class="active">Writing</a></li>
+      <li><a href="/#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- ══ PAGE HEADER ══ -->
-  <header class="page-header" data-watermark="WORDS" style="background: var(--ink);">
+  <header class="page-header reveal">
     <div class="page-header-inner">
-      <p class="t-eyebrow t-eyebrow--gold">Words &amp; Media</p>
-      <h1 class="t-display t-display--light" style="font-size: clamp(2.8rem, 6vw, 6rem);">Writing &amp;<br />Media</h1>
-      <p class="page-header-sub">
-        Essays on faith, liberation, and transformation — plus media appearances, podcast features, and documentary films that span more than a decade of public voice.
-      </p>
+      <span class="t-eyebrow t-eyebrow--gold">Words &amp; Media</span>
+      <h1 class="t-display t-display--light">Writing &amp;<br>Media</h1>
+      <p class="page-header-sub">Essays on faith, liberation, and transformation &mdash; plus media appearances, podcast features, and documentary films that span more than a decade of public voice.</p>
     </div>
   </header>
 
-  <!-- ══ FEATURED + ARTICLE GRID ══ -->
-  <section class="section section--light" id="essays">
+  <section class="section section--light">
     <div class="section-inner">
-      <p class="section-label reveal">From Medium — @Brother_Wes</p>
+      <p class="section-label reveal">From Medium &mdash; @Brother_Wes</p>
       <h2 class="section-heading reveal">Featured <em>Writing</em></h2>
-      <p class="section-subhead reveal">Essays exploring the intersections of faith, freedom, and the long work of transformation. Read more at <a href="https://medium.com/@Brother_Wes" target="_blank" rel="noopener" style="color:var(--copper); border-bottom:1px solid rgba(139,69,19,0.25);">medium.com/@Brother_Wes</a></p>
+      <p class="section-subhead reveal">Essays exploring the intersections of faith, freedom, and the long work of transformation.</p>
 
-      <!-- Featured essay -->
       <a href="https://medium.com/@Brother_Wes/lead-us-beside-and-into-the-still-darkness-976ef818f773" target="_blank" rel="noopener" class="featured-piece reveal">
         <div class="featured-content">
-          <span class="featured-tag">Theology · Medium</span>
+          <span class="featured-tag">Theology &middot; Medium</span>
           <h3 class="featured-title">Lead Us Beside and into the Still Darkness</h3>
-          <p class="featured-excerpt">A meditation on the 23rd Psalm's "still waters" — and the possibility that what we most need is not the comfort we expect, but the darkness we have been taught to fear. On pastoral care, grief, and the kind of presence that does not flinch.</p>
-          <span class="blog-read-more">Read on Medium ↗</span>
+          <p class="featured-excerpt">A meditation on the 23rd Psalm&rsquo;s &ldquo;still waters&rdquo; &mdash; and the possibility that what we most need is not the comfort we expect, but the darkness we have been taught to fear. On pastoral care, grief, and the kind of presence that does not flinch.</p>
+          <span class="blog-read-more">Read on Medium &#8599;</span>
         </div>
         <div class="featured-img-side">
-          <img src="photos/wjm-featured-candles.jpg" alt="Candlelit outdoor table at dusk" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" />
+          <img src="photos/wjm-featured-candles.jpg" alt="Lead Us Beside and into the Still Darkness" />
         </div>
       </a>
 
-      <!-- 6-card grid -->
-      <div class="blog-grid" style="margin-top: 2px;">
-
+      <div class="blog-grid">
         <a href="https://medium.com/@Brother_Wes/finish-strong-f23c7c4270d7" target="_blank" rel="noopener" class="blog-card">
-          <div class="blog-tag">Motivation · Medium</div>
+          <div class="blog-tag">Motivation &middot; Medium</div>
           <h3 class="blog-title">Finish Strong</h3>
-          <p class="blog-excerpt">On what it means to finish — not just begin — and the discipline of seeing your commitments through when the energy of the beginning has long since faded.</p>
+          <p class="blog-excerpt">On what it means to finish &mdash; not just begin &mdash; and the discipline of seeing your commitments through when the energy of the beginning has long since faded.</p>
           <div class="blog-footer">
             <span>Medium</span>
-            <span class="blog-read-more">Read ↗</span>
+            <span class="blog-read-more">Read &#8599;</span>
           </div>
         </a>
 
         <a href="https://medium.com/@Brother_Wes/no-one-knows-me-like-my-piano-c366a815e610" target="_blank" rel="noopener" class="blog-card">
-          <div class="blog-tag">Music · Memoir · Medium</div>
+          <div class="blog-tag">Music &middot; Memoir &middot; Medium</div>
           <h3 class="blog-title">No One Knows Me Like the Piano</h3>
           <p class="blog-excerpt">A personal essay on music, intimacy, and the particular kind of self-knowledge that only comes through the practice of an instrument you have kept returning to your whole life.</p>
           <div class="blog-footer">
             <span>Medium</span>
-            <span class="blog-read-more">Read ↗</span>
+            <span class="blog-read-more">Read &#8599;</span>
           </div>
         </a>
 
         <a href="https://medium.com/@Brother_Wes/making-the-team-hoop-dreams-cc6dfac1e5a8" target="_blank" rel="noopener" class="blog-card">
-          <div class="blog-tag">Sport · Identity · Medium</div>
+          <div class="blog-tag">Sport &middot; Identity &middot; Medium</div>
           <h3 class="blog-title">Making the Team: Hoop Dreams</h3>
           <p class="blog-excerpt">On basketball, belonging, and what it means to want something badly enough to risk being told no. The lessons of the tryout that extend well past the gym.</p>
           <div class="blog-footer">
             <span>Medium</span>
-            <span class="blog-read-more">Read ↗</span>
+            <span class="blog-read-more">Read &#8599;</span>
           </div>
         </a>
 
         <a href="https://medium.com/@Brother_Wes/life-wakes-up-with-us-7e30806a37f1?postPublishedType=repub" target="_blank" rel="noopener" class="blog-card">
-          <div class="blog-tag">Reflection · Medium</div>
+          <div class="blog-tag">Reflection &middot; Medium</div>
           <h3 class="blog-title">Life Wakes Up with Us</h3>
-          <p class="blog-excerpt">On the ordinary miracle of waking — and what it means to meet a day with intention, to carry your history into the morning without being dragged under by it.</p>
+          <p class="blog-excerpt">On the ordinary miracle of waking &mdash; and what it means to meet a day with intention, to carry your history into the morning without being dragged under by it.</p>
           <div class="blog-footer">
             <span>Medium</span>
-            <span class="blog-read-more">Read ↗</span>
+            <span class="blog-read-more">Read &#8599;</span>
           </div>
         </a>
 
         <a href="https://medium.com/@Brother_Wes/what-activist-wesley-morris-talks-about-when-he-talks-about-black-man-running-d0e9ef545d37" target="_blank" rel="noopener" class="blog-card">
-          <div class="blog-tag">Race · Body · Medium</div>
+          <div class="blog-tag">Race &middot; Body &middot; Medium</div>
           <h3 class="blog-title">What Activist Wesley Morris Talks About When He Talks About Black Man Running</h3>
-          <p class="blog-excerpt">On running while Black — the politics of a Black body in motion through white space, the discipline of the run, and what it means to claim public ground through presence.</p>
+          <p class="blog-excerpt">On running while Black &mdash; the politics of a Black body in motion through white space, the discipline of the run, and what it means to claim public ground through presence.</p>
           <div class="blog-footer">
             <span>Medium</span>
-            <span class="blog-read-more">Read ↗</span>
+            <span class="blog-read-more">Read &#8599;</span>
           </div>
         </a>
 
         <a href="https://medium.com/@Brother_Wes/nov-9th-2016-73f900b48982" target="_blank" rel="noopener" class="blog-card">
-          <div class="blog-tag">Politics · Grief · Medium</div>
+          <div class="blog-tag">Politics &middot; Grief &middot; Medium</div>
           <h3 class="blog-title">Nov 9th, 2016</h3>
-          <p class="blog-excerpt">Written the morning after the 2016 election — a reckoning with grief, with responsibility, and with what the church and the movement are called to do next. A document of a particular American morning.</p>
+          <p class="blog-excerpt">Written the morning after the 2016 election &mdash; a reckoning with grief, with responsibility, and with what the church and the movement are called to do next. A document of a particular American morning.</p>
           <div class="blog-footer">
             <span>November 2016</span>
-            <span class="blog-read-more">Read ↗</span>
+            <span class="blog-read-more">Read &#8599;</span>
           </div>
         </a>
-
       </div>
 
-      <div style="margin-top: 3rem; text-align:center;">
-        <a href="https://medium.com/@Brother_Wes" target="_blank" rel="noopener" class="btn btn--ghost">All Essays on Medium ↗</a>
+      <div>
+        <a href="https://medium.com/@Brother_Wes" target="_blank" rel="noopener" class="btn btn--ghost">All Essays on Medium &#8599;</a>
       </div>
     </div>
   </section>
 
-  <div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+  <div class="ornament">&#10022; &#10022; &#10022;</div>
 
-  <!-- ══ MEDIA APPEARANCES ══ -->
-  <section class="section section--parchment" id="media">
+  <section class="section section--parchment">
     <div class="section-inner">
       <p class="section-label reveal">Media</p>
       <h2 class="section-heading reveal">Appearances &amp; <em>Features</em></h2>
+
       <div class="media-list reveal">
 
         <a href="https://www.youtube.com/watch?v=SAF-n20oIJE" target="_blank" rel="noopener" class="media-item">
           <span class="media-type media-type--tv">Documentary</span>
           <div>
-            <div class="media-title">BBC World Documentary — "Combatting the Rise of Christian Nationalism and the Role of Donald Trump"</div>
-            <p class="media-desc">Featured interview exploring the intersection of faith, political power, and the prophetic tradition's responsibility to resist Christian nationalism.</p>
-            <p class="media-link-hint">Watch on YouTube ↗</p>
+            <div class="media-title">BBC World Documentary &mdash; &ldquo;Combatting the Rise of Christian Nationalism and the Role of Donald Trump&rdquo;</div>
+            <p class="media-desc">Featured interview exploring the intersection of faith, political power, and the prophetic tradition&rsquo;s responsibility to resist Christian nationalism.</p>
+            <p class="media-link-hint">Watch on YouTube &#8599;</p>
           </div>
         </a>
 
         <a href="https://www.youtube.com/watch?v=FMcSMIgJkVQ&t=12s" target="_blank" rel="noopener" class="media-item">
           <span class="media-type media-type--podcast">Podcast</span>
           <div>
-            <div class="media-title">Pickin' for Progress w/ Joe Troop — Rev. Nelson Johnson and Rev. Wesley Morris (2022)</div>
-            <p class="media-desc">A conversation on mentorship, movement, and the long arc of justice in Greensboro, NC — with mentor Rev. Nelson Johnson.</p>
-            <p class="media-link-hint">Watch on YouTube ↗</p>
+            <div class="media-title">Pickin&rsquo; for Progress w/ Joe Troop &mdash; Rev. Nelson Johnson and Rev. Wesley Morris (2022)</div>
+            <p class="media-desc">A conversation on mentorship, movement, and the long arc of justice in Greensboro, NC &mdash; with mentor Rev. Nelson Johnson.</p>
+            <p class="media-link-hint">Watch on YouTube &#8599;</p>
           </div>
         </a>
 
         <a href="https://churchanew.org/blog/posts/wesley-morris-leadership-lab" target="_blank" rel="noopener" class="media-item">
           <span class="media-type">Interview</span>
           <div>
-            <div class="media-title">Church Anew "Leadership Lab" (2023)</div>
-            <p class="media-desc">Featured in the Church Anew Leadership Lab series, connected to the "Rewilding Otherwise" Lilly Foundation grant project.</p>
-            <p class="media-link-hint">Read at Church Anew ↗</p>
+            <div class="media-title">Church Anew &ldquo;Leadership Lab&rdquo; (2023)</div>
+            <p class="media-desc">Featured in the Church Anew Leadership Lab series, connected to the &ldquo;Rewilding Otherwise&rdquo; Lilly Foundation grant project.</p>
+            <p class="media-link-hint">Read at Church Anew &#8599;</p>
           </div>
         </a>
 
         <a href="https://open.spotify.com/episode/4dvSLCuSttmof7wp26V9UV?si=buVpFmtsRFWmz4RkYMccyQ" target="_blank" rel="noopener" class="media-item">
           <span class="media-type media-type--podcast">Podcast</span>
           <div>
-            <div class="media-title">Wonder Dome — "In Awe of The Stars" (2021)</div>
-            <p class="media-desc">On wonder, cosmology, and the spiritual dimensions of contemplating the universe — what awe requires of us and what it gives back.</p>
-            <p class="media-link-hint">Listen on Spotify ↗</p>
+            <div class="media-title">Wonder Dome &mdash; &ldquo;In Awe of The Stars&rdquo; (2021)</div>
+            <p class="media-desc">On wonder, cosmology, and the spiritual dimensions of contemplating the universe &mdash; what awe requires of us and what it gives back.</p>
+            <p class="media-link-hint">Listen on Spotify &#8599;</p>
           </div>
         </a>
 
         <a href="https://www.keystepmedia.com/podcast/chasing-the-happiness-high-pt-3-spirituality-w-wesley-morris/" target="_blank" rel="noopener" class="media-item">
           <span class="media-type media-type--podcast">Podcast</span>
           <div>
-            <div class="media-title">Daniel Goleman — First Person Plural — "Chasing the Happiness High Pt. 3: Spirituality" (2018)</div>
-            <p class="media-desc">Featured in the emotional intelligence podcast series — exploring dark theological traditions as resources for authentic transformation. Why the pursuit of comfort can be the enemy of growth.</p>
-            <p class="media-link-hint">Listen at KeyStep Media ↗</p>
+            <div class="media-title">Daniel Goleman &mdash; First Person Plural &mdash; &ldquo;Chasing the Happiness High Pt. 3: Spirituality&rdquo; (2018)</div>
+            <p class="media-desc">Featured in the emotional intelligence podcast series &mdash; exploring dark theological traditions as resources for authentic transformation. Why the pursuit of comfort can be the enemy of growth.</p>
+            <p class="media-link-hint">Listen at KeyStep Media &#8599;</p>
           </div>
         </a>
 
-        <a href="https://www.youtube.com/watch?v=YZGqfr6e5c4&t=11s" target="_blank" rel="noopener" class="media-item">
-          <span class="media-type media-type--podcast">Podcast</span>
+        <a href="https://www.youtube.com/watch?v=L4UkKOhL9W4&t=639s" target="_blank" rel="noopener" class="media-item">
+          <span class="media-type media-type--talk">Address</span>
           <div>
-            <div class="media-title">Dreamcatchers Podcast — "Loving the Unloved" (2018)</div>
-            <p class="media-desc">On radical love as pastoral practice, community organizing principle, and prophetic vocation.</p>
-            <p class="media-link-hint">Watch on YouTube ↗</p>
+            <div class="media-title">40th Anniversary Dinner &mdash; Hold the Line: Black Workers for Justice</div>
+            <p class="media-desc">A speech delivered at the 40th anniversary celebration dinner of Hold the Line: Black Workers for Justice, recognizing four decades of labor organizing and racial justice work.</p>
+            <p class="media-link-hint">Watch on YouTube &#8599;</p>
           </div>
         </a>
 
@@ -345,17 +187,17 @@
           <span class="media-type media-type--talk">Address</span>
           <div>
             <div class="media-title">Union Theological Seminary Commencement Address (2017)</div>
-            <p class="media-desc">Commencement speaker at Union Theological Seminary's 2017 graduation ceremony. Wesley's address begins at 2:02:28 in the recording.</p>
-            <p class="media-link-hint">Watch on YouTube (begins 2:02:28) ↗</p>
+            <p class="media-desc">Commencement speaker at Union Theological Seminary&rsquo;s 2017 graduation ceremony. Wesley&rsquo;s address begins at 2:02:28 in the recording.</p>
+            <p class="media-link-hint">Watch on YouTube (begins 2:02:28) &#8599;</p>
           </div>
         </a>
 
         <a href="https://www.pbs.org/video/unc-tv-presents-harvest-dignity/" target="_blank" rel="noopener" class="media-item">
           <span class="media-type media-type--documentary">Documentary</span>
           <div>
-            <div class="media-title">Oxfam / UNC-TV — "Harvest of Dignity: Migrant Farm Workers" (2012)</div>
+            <div class="media-title">Oxfam / UNC-TV &mdash; &ldquo;Harvest of Dignity: Migrant Farm Workers&rdquo; (2012)</div>
             <p class="media-desc">Featured in the documentary on migrant farm worker rights and advocacy in North Carolina, connected to organizing work with the Farm Labor Organizing Committee.</p>
-            <p class="media-link-hint">Watch on PBS ↗</p>
+            <p class="media-link-hint">Watch on PBS &#8599;</p>
           </div>
         </a>
 
@@ -363,33 +205,34 @@
     </div>
   </section>
 
-  <!-- ══ MEDIUM CTA ══ -->
   <div class="medium-cta">
-    <div class="medium-cta-text" style="flex:1;">
+    <div class="medium-cta-text">
       <h3>Read More on Medium</h3>
-      <p>Essays on faith, liberation, community, and the long work of transformation — published at @Brother_Wes.</p>
+      <p>Essays on faith, liberation, community, and the long work of transformation &mdash; published at @Brother_Wes.</p>
     </div>
-    <a href="https://medium.com/@Brother_Wes" target="_blank" rel="noopener" class="btn btn--gold" style="border:none; flex-shrink:0; white-space:nowrap;">Visit @Brother_Wes ↗</a>
+    <a href="https://medium.com/@Brother_Wes" target="_blank" rel="noopener" class="btn btn--gold">Visit @Brother_Wes &#8599;</a>
   </div>
 
-  <!-- ══ FOOTER ══ -->
   <footer class="site-footer">
     <span class="footer-brand">Wesley J. Morris LLC</span>
     <ul class="footer-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="work.html">Work</a></li>
-      <li><a href="framework.html">Frameworks</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/work">Work</a></li>
+      <li><a href="/framework">Frameworks</a></li>
+      <li><a href="/#contact">Contact</a></li>
       <li><a href="https://faithccgso.org" target="_blank" rel="noopener">Faith CC</a></li>
     </ul>
-    <span class="footer-copy">© 2026 Wesley J. Morris LLC. All rights reserved.</span>
+    <span class="footer-copy">&copy; 2026 Wesley J. Morris LLC. All rights reserved.</span>
   </footer>
 
   <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
       });
     }, { threshold: 0.06 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
@@ -400,5 +243,6 @@
       document.getElementById('nav-links').classList.toggle('open');
     });
   </script>
+
 </body>
 </html>
