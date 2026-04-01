@@ -8,6 +8,149 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" />
   <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    /* ─── Featured piece ─── */
+    .featured-piece {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 3rem;
+      align-items: center;
+      margin-bottom: 4rem;
+      text-decoration: none;
+      color: inherit;
+      transition: opacity 0.2s;
+    }
+    .featured-piece:hover { opacity: 0.88; }
+    .featured-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .featured-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.25;
+      margin-bottom: 1.1rem;
+    }
+    .featured-excerpt {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(61,43,31,0.68);
+      margin-bottom: 1.4rem;
+    }
+    .featured-img-side img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ─── Media appearances ─── */
+    .media-list {
+      display: flex;
+      flex-direction: column;
+      margin-top: 3rem;
+    }
+    .media-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+      padding: 1.8rem 0;
+      border-bottom: 1px solid rgba(139,69,19,0.12);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.2s;
+    }
+    .media-item:first-child { border-top: 1px solid rgba(139,69,19,0.12); }
+    .media-item:hover { background: rgba(139,69,19,0.03); }
+    .media-type {
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--copper);
+      background: rgba(139,69,19,0.08);
+      padding: 0.35rem 0.7rem;
+      flex-shrink: 0;
+      width: 100px;
+      text-align: center;
+      margin-top: 0.25rem;
+      line-height: 1.6;
+    }
+    .media-type--podcast { color: var(--gold); background: rgba(201,151,43,0.12); }
+    .media-type--tv      { color: var(--copper-light); background: rgba(139,69,19,0.1); }
+    .media-type--documentary { color: var(--copper-light); background: rgba(139,69,19,0.1); }
+    .media-type--talk    { color: var(--charcoal); background: rgba(44,31,20,0.09); }
+    .media-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 0.45rem;
+    }
+    .media-desc {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: rgba(61,43,31,0.62);
+      margin-bottom: 0.5rem;
+    }
+    .media-link-hint {
+      font-family: 'Cinzel', serif;
+      font-size: 0.56rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--copper);
+    }
+
+    /* ─── Medium CTA ─── */
+    .medium-cta {
+      background: var(--earth);
+      padding: 5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 2rem;
+    }
+    .medium-cta-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 300;
+      color: var(--parchment-light);
+      margin-bottom: 0.6rem;
+    }
+    .medium-cta-text p {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: rgba(240,232,216,0.65);
+      max-width: 480px;
+    }
+
+    /* ─── Blog section extras ─── */
+    .blog-grid { margin-bottom: 2.5rem; }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 900px) {
+      .featured-piece { grid-template-columns: 1fr; }
+      .featured-img-side { order: -1; }
+      .featured-img-side img { height: 220px; }
+      .medium-cta { padding: 4rem 1.5rem; }
+    }
+    @media (max-width: 600px) {
+      .media-item { gap: 1rem; }
+      .media-type { width: 72px; font-size: 0.48rem; }
+    }
+  </style>
 </head>
 <body>
 
