@@ -11,6 +11,24 @@
   <link rel="stylesheet" href="assets/styles.css" />
   <style>
 
+    /* ── Override page header to light tan ── */
+    .page-header {
+      background-color: #f5efe0 !important;
+    }
+    .page-header .t-eyebrow {
+      color: var(--copper, #8b4513) !important;
+    }
+    .page-header .t-display--light {
+      color: var(--ink, #3d2b1f) !important;
+    }
+    .page-header .page-header-sub {
+      color: rgba(61,43,31,0.65) !important;
+    }
+    /* Watermark in light mode */
+    .page-header[data-watermark]::after {
+      color: rgba(61,43,31,0.05) !important;
+    }
+
     /* ── Featured Hero ── */
     .featured-hero {
       display: grid;
@@ -139,60 +157,80 @@
     }
     .writing-card__link:hover { border-color: var(--copper); }
 
-    /* ── Media & Appearances Cards ── */
-    .media-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-    .media-card {
-      border: 1px solid rgba(201,151,43,0.2);
-      padding: 2rem;
+    /* ── Media & Appearances — Vertical List ── */
+    .media-list {
       display: flex;
       flex-direction: column;
-      gap: 0.9rem;
-      transition: border-color 0.2s;
-      text-decoration: none;
+      gap: 0;
+      margin-top: 3rem;
+      border-top: 1px solid rgba(139,69,19,0.15);
     }
-    .media-card:hover { border-color: rgba(201,151,43,0.55); }
-    .media-card__type {
+    .media-item {
+      display: grid;
+      grid-template-columns: 160px 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      padding: 2rem 0;
+      border-bottom: 1px solid rgba(139,69,19,0.12);
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .media-item:hover { background: rgba(201,151,43,0.03); }
+    .media-item__meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .media-item__type {
       font-family: 'Cinzel', serif;
-      font-size: 0.52rem;
+      font-size: 0.5rem;
       letter-spacing: 0.26em;
       text-transform: uppercase;
-      color: var(--gold-light);
-      opacity: 0.75;
+      color: var(--copper-light);
     }
-    .media-card__title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
-      font-weight: 400;
-      line-height: 1.35;
-      color: rgba(240,232,216,0.92);
-      flex-grow: 1;
-    }
-    .media-card__source {
+    .media-item__outlet {
       font-family: 'Crimson Pro', serif;
       font-size: 0.85rem;
       font-style: italic;
-      color: rgba(240,232,216,0.45);
+      color: rgba(61,43,31,0.45);
     }
-    .media-card__arrow {
+    .media-item__body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .media-item__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      line-height: 1.32;
+      color: var(--ink);
+    }
+    .media-item__desc {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.9rem;
+      font-style: italic;
+      line-height: 1.65;
+      color: rgba(61,43,31,0.6);
+    }
+    .media-item__arrow {
       font-family: 'Cinzel', serif;
       font-size: 0.58rem;
-      letter-spacing: 0.18em;
-      color: var(--gold-light);
+      letter-spacing: 0.16em;
+      color: var(--copper);
+      white-space: nowrap;
     }
 
     @media (max-width: 900px) {
       .featured-hero { grid-template-columns: 1fr; min-height: auto; }
       .featured-hero__img { min-height: 240px; max-height: 300px; }
       .featured-hero__body { padding: 2rem; }
-      .writing-grid, .media-grid { grid-template-columns: 1fr 1fr; }
+      .writing-grid { grid-template-columns: 1fr 1fr; }
+      .media-item { grid-template-columns: 1fr; gap: 0.75rem; }
+      .media-item__arrow { display: none; }
     }
     @media (max-width: 600px) {
-      .writing-grid, .media-grid { grid-template-columns: 1fr; }
+      .writing-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -214,7 +252,7 @@
     </ul>
   </nav>
 
-  <!-- ══ PAGE HEADER ══ -->
+  <!-- ══ PAGE HEADER (light tan) ══ -->
   <header class="page-header" data-watermark="WRITING">
     <div class="page-header-inner">
       <p class="t-eyebrow">Essays &amp; Reflections</p>
@@ -248,7 +286,7 @@
     </div>
   </section>
 
-  <!-- ══ WRITING GRID ══ -->
+  <!-- ══ WRITING GRID (6 articles) ══ -->
   <section class="section section--light" id="writing">
     <div class="section-inner">
       <p class="section-label reveal">All Writing</p>
@@ -311,46 +349,7 @@
 
         <article class="writing-card reveal">
           <div class="writing-card__img-wrap">
-            <img src="https://cdn-images-1.medium.com/max/1024/1*0B0yKnz-ZCk4B_ysVDUFqg.jpeg" alt="Finish Strong" />
-          </div>
-          <div class="writing-card__body">
-            <p class="writing-card__tag">Encouragement</p>
-            <h3 class="writing-card__title">Finish Strong</h3>
-            <p class="writing-card__excerpt">Never let go of the fire inside. A word for those in the final stretch — the season when endurance becomes its own form of witness.</p>
-            <a href="https://brotherwesley.substack.com/p/finish-strong-f23c7c4270d7"
-               target="_blank" rel="noopener noreferrer" class="writing-card__link">Read Essay &#8594;</a>
-          </div>
-        </article>
-
-        <article class="writing-card reveal">
-          <div class="writing-card__img-wrap">
-            <img src="https://cdn-images-1.medium.com/max/1024/1*2Ru9PLiPuF4WCK1Td34oFw.jpeg" alt="Black Paper Bought and Sold" />
-          </div>
-          <div class="writing-card__body">
-            <p class="writing-card__tag">Race &amp; Power</p>
-            <h3 class="writing-card__title">Black Paper Bought and Sold</h3>
-            <p class="writing-card__excerpt">A story told under the guise of Black Paper being bought and sold — on ownership, narrative, and what it means to tell our own stories.</p>
-            <a href="https://brotherwesley.substack.com/p/black-paper-bought-and-sold-944719bbd7a1"
-               target="_blank" rel="noopener noreferrer" class="writing-card__link">Read Essay &#8594;</a>
-          </div>
-        </article>
-
-        <article class="writing-card reveal">
-          <div class="writing-card__img-wrap">
-            <img src="https://cdn-images-1.medium.com/max/834/1*d55I2JQ91id9H57scTPRDA.jpeg" alt="Large Shadows and Great Suns" />
-          </div>
-          <div class="writing-card__body">
-            <p class="writing-card__tag">Liberation</p>
-            <h3 class="writing-card__title">Large Shadows and Great Suns</h3>
-            <p class="writing-card__excerpt">Continue to fly. On the tension between the shadows that loom and the light that insists on breaking through — and what it means to soar anyway.</p>
-            <a href="https://brotherwesley.substack.com/p/large-shadows-and-great-suns-682d513cee22"
-               target="_blank" rel="noopener noreferrer" class="writing-card__link">Read Essay &#8594;</a>
-          </div>
-        </article>
-
-        <article class="writing-card reveal">
-          <div class="writing-card__img-wrap">
-            <img src="https://cdn-images-1.medium.com/max/1024/1*CHVglMLS9F3rEmwuvcH3Fg.jpeg" alt="What Activist Wesley Morris Talks About When He Talks About Black Man Running" />
+            <img src="photos/wjm-ghana-street.jpg" alt="What Activist Wesley Morris Talks About When He Talks About Black Man Running" />
           </div>
           <div class="writing-card__body">
             <p class="writing-card__tag">Justice &amp; Action</p>
@@ -363,13 +362,13 @@
 
         <article class="writing-card reveal">
           <div class="writing-card__img-wrap">
-            <img src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F89685168-12a6-42f5-b02e-7376dfb06e8e_1024x983.jpeg" alt="Palestine: Sing Your Spirit Home" />
+            <img src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F59c0ae76-36ad-46ca-bcb4-24cb2fe894ab_604x453.jpeg" alt="Making the Team: Hoop Dreams" />
           </div>
           <div class="writing-card__body">
-            <p class="writing-card__tag">Lament &amp; Hope</p>
-            <h3 class="writing-card__title">Palestine: Sing Your Spirit Home</h3>
-            <p class="writing-card__excerpt">A piece written out of grief and solidarity — an act of witness, lamentation, and the stubborn insistence that spirit survives.</p>
-            <a href="https://brotherwesley.substack.com/p/palestine-sing-your-spirit-home-6d3220eb3ff0"
+            <p class="writing-card__tag">Dreams &amp; Resilience</p>
+            <h3 class="writing-card__title">Making the Team: Hoop Dreams</h3>
+            <p class="writing-card__excerpt">On basketball, belonging, and the relentless pursuit of a dream — what the game teaches us about perseverance, identity, and what it means to show up fully.</p>
+            <a href="https://brotherwesley.substack.com/p/making-the-team-hoop-dreams-cc6dfac1e5a8"
                target="_blank" rel="noopener noreferrer" class="writing-card__link">Read Essay &#8594;</a>
           </div>
         </article>
@@ -400,67 +399,91 @@
       <h2 class="section-heading reveal">Media &amp; <em>Appearances</em></h2>
       <p class="section-subhead reveal">Selected features, documentaries, podcast conversations, and public addresses.</p>
 
-      <div class="media-grid">
+      <div class="media-list">
 
         <a href="https://www.youtube.com/watch?v=FMcSMIgJkVQ&t=13s"
-           target="_blank" rel="noopener noreferrer" class="media-card reveal"
-           style="background:rgba(201,151,43,0.04);">
-          <p class="media-card__type" style="color:var(--copper-light);">Documentary</p>
-          <p class="media-card__title" style="color:var(--ink);">Picking Progress</p>
-          <p class="media-card__source" style="color:rgba(61,43,31,0.5);">YouTube</p>
-          <p class="media-card__arrow" style="color:var(--copper);">Watch &#8594;</p>
+           target="_blank" rel="noopener noreferrer" class="media-item reveal">
+          <div class="media-item__meta">
+            <span class="media-item__type">Documentary</span>
+            <span class="media-item__outlet">YouTube</span>
+          </div>
+          <div class="media-item__body">
+            <p class="media-item__title">Picking Progress</p>
+            <p class="media-item__desc">Rev. Nelson Johnson and Rev. Wesley Morris in a powerful intergenerational conversation — two Black men in the movement examining the legacy of civil rights struggle, faith, and the ongoing work of liberation across generations.</p>
+          </div>
+          <span class="media-item__arrow">Watch &#8594;</span>
         </a>
 
         <a href="https://www.youtube.com/watch?v=SAF-n20oIJE"
-           target="_blank" rel="noopener noreferrer" class="media-card reveal"
-           style="background:rgba(201,151,43,0.04); border-color:rgba(139,69,19,0.15);">
-          <p class="media-card__type" style="color:var(--copper-light);">Documentary</p>
-          <p class="media-card__title" style="color:var(--ink);">BBC Documentary</p>
-          <p class="media-card__source" style="color:rgba(61,43,31,0.5);">BBC / YouTube</p>
-          <p class="media-card__arrow" style="color:var(--copper);">Watch &#8594;</p>
+           target="_blank" rel="noopener noreferrer" class="media-item reveal">
+          <div class="media-item__meta">
+            <span class="media-item__type">Documentary</span>
+            <span class="media-item__outlet">BBC</span>
+          </div>
+          <div class="media-item__body">
+            <p class="media-item__title">BBC Documentary</p>
+            <p class="media-item__desc">A multi-layered exploration of the fight against Christian nationalism — examining the future of faith, the boundaries of belief, and what it means to pursue justice in a deeply contested religious landscape.</p>
+          </div>
+          <span class="media-item__arrow">Watch &#8594;</span>
         </a>
 
         <a href="https://www.keystepmedia.com/podcast/chasing-the-happiness-high-pt-3-spirituality-w-wesley-morris/"
-           target="_blank" rel="noopener noreferrer" class="media-card reveal"
-           style="background:rgba(201,151,43,0.04); border-color:rgba(139,69,19,0.15);">
-          <p class="media-card__type" style="color:var(--copper-light);">Podcast</p>
-          <p class="media-card__title" style="color:var(--ink);">Chasing the Happiness High: Spirituality with Wesley Morris</p>
-          <p class="media-card__source" style="color:rgba(61,43,31,0.5);">Keystep Media</p>
-          <p class="media-card__arrow" style="color:var(--copper);">Listen &#8594;</p>
+           target="_blank" rel="noopener noreferrer" class="media-item reveal">
+          <div class="media-item__meta">
+            <span class="media-item__type">Podcast</span>
+            <span class="media-item__outlet">Keystep Media</span>
+          </div>
+          <div class="media-item__body">
+            <p class="media-item__title">Chasing the Happiness High: Spirituality with Wesley Morris</p>
+            <p class="media-item__desc">Wesley Morris sits down to explore the spiritual roots of joy and flourishing — a candid conversation on finding meaning, embodying purpose, and what a grounded sacred life actually looks and feels like.</p>
+          </div>
+          <span class="media-item__arrow">Listen &#8594;</span>
         </a>
 
         <a href="https://music.amazon.com.mx/podcasts/4c018f53-c704-4169-af13-3b3fcbbf90d4/episodes/a6219e81-04b1-48e1-93db-3bcd55a678db/the-wonder-dome-60-in-awe-of-the-stars-with-wesley-morris"
-           target="_blank" rel="noopener noreferrer" class="media-card reveal"
-           style="background:rgba(201,151,43,0.04); border-color:rgba(139,69,19,0.15);">
-          <p class="media-card__type" style="color:var(--copper-light);">Podcast</p>
-          <p class="media-card__title" style="color:var(--ink);">The Wonder Dome: In Awe of the Stars with Wesley Morris</p>
-          <p class="media-card__source" style="color:rgba(61,43,31,0.5);">Amazon Music</p>
-          <p class="media-card__arrow" style="color:var(--copper);">Listen &#8594;</p>
+           target="_blank" rel="noopener noreferrer" class="media-item reveal">
+          <div class="media-item__meta">
+            <span class="media-item__type">Podcast</span>
+            <span class="media-item__outlet">Amazon Music</span>
+          </div>
+          <div class="media-item__body">
+            <p class="media-item__title">The Wonder Dome: In Awe of the Stars with Wesley Morris</p>
+            <p class="media-item__desc">Wesley joins The Wonder Dome for a wide-ranging conversation about wonder, cosmos, and the sacred — exploring what it means to stand beneath the stars and feel both humbled and held by something greater than ourselves.</p>
+          </div>
+          <span class="media-item__arrow">Listen &#8594;</span>
         </a>
 
         <a href="https://www.pbs.org/video/unc-tv-presents-harvest-dignity/"
-           target="_blank" rel="noopener noreferrer" class="media-card reveal"
-           style="background:rgba(201,151,43,0.04); border-color:rgba(139,69,19,0.15);">
-          <p class="media-card__type" style="color:var(--copper-light);">Television</p>
-          <p class="media-card__title" style="color:var(--ink);">Harvest of Dignity</p>
-          <p class="media-card__source" style="color:rgba(61,43,31,0.5);">PBS / UNC-TV</p>
-          <p class="media-card__arrow" style="color:var(--copper);">Watch &#8594;</p>
+           target="_blank" rel="noopener noreferrer" class="media-item reveal">
+          <div class="media-item__meta">
+            <span class="media-item__type">Television</span>
+            <span class="media-item__outlet">PBS / UNC-TV</span>
+          </div>
+          <div class="media-item__body">
+            <p class="media-item__title">Harvest of Dignity</p>
+            <p class="media-item__desc">A PBS documentary honoring the vital farm labor movement — lifting up the dignity, resilience, and collective strength of workers who sustain our food system while fighting for fair wages, safe conditions, and justice in the fields.</p>
+          </div>
+          <span class="media-item__arrow">Watch &#8594;</span>
         </a>
 
         <a href="https://www.youtube.com/watch?v=0LKPQ4lamNQ&t=7594s"
-           target="_blank" rel="noopener noreferrer" class="media-card reveal"
-           style="background:rgba(201,151,43,0.04); border-color:rgba(139,69,19,0.15);">
-          <p class="media-card__type" style="color:var(--copper-light);">Address</p>
-          <p class="media-card__title" style="color:var(--ink);">Union Theological Seminary Commencement Address</p>
-          <p class="media-card__source" style="color:rgba(61,43,31,0.5);">YouTube &mdash; begins at 2:02:30</p>
-          <p class="media-card__arrow" style="color:var(--copper);">Watch &#8594;</p>
+           target="_blank" rel="noopener noreferrer" class="media-item reveal">
+          <div class="media-item__meta">
+            <span class="media-item__type">Address</span>
+            <span class="media-item__outlet">YouTube &mdash; 2:02:30</span>
+          </div>
+          <div class="media-item__body">
+            <p class="media-item__title">Union Theological Seminary Commencement Address</p>
+            <p class="media-item__desc">Wesley Morris delivers the commencement address at Union Theological Seminary — a charge to graduates entering a world in need of prophetic voices, courageous faith, and the kind of love that costs something.</p>
+          </div>
+          <span class="media-item__arrow">Watch &#8594;</span>
         </a>
 
       </div>
     </div>
   </section>
 
-  <div class="ornament" style="background:var(--ivory);color:rgba(139,69,19,0.2);">&#10022; &nbsp; &#10022; &nbsp; &#10022;</div>
+  <div class="ornament" style="background:var(--ivory, #f5efe0); color:rgba(139,69,19,0.2);">&#10022; &nbsp; &#10022; &nbsp; &#10022;</div>
 
   <!-- ══ FOOTER ══ -->
   <footer class="site-footer">
