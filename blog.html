@@ -10,58 +10,61 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/styles.css" />
   <style>
-    .featured-wrap {
+
+    /* ── Featured Hero ── */
+    .featured-hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
+      gap: 0;
+      min-height: 420px;
       margin-top: 3rem;
+      border: 1px solid rgba(201,151,43,0.18);
     }
-    .featured-label {
+    .featured-hero__img {
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+    .featured-hero__body {
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .featured-hero__eyebrow {
       font-family: 'Cinzel', serif;
-      font-size: 0.6rem;
-      letter-spacing: 0.25em;
+      font-size: 0.58rem;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--gold-light);
       margin-bottom: 1.2rem;
     }
-    .featured-title {
+    .featured-hero__title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
       font-weight: 300;
-      line-height: 1.2;
-      color: rgba(240,232,216,0.95);
-      margin-bottom: 1.5rem;
+      line-height: 1.18;
+      color: rgba(240,232,216,0.96);
+      margin-bottom: 1.4rem;
     }
-    .featured-excerpt {
-      font-family: 'Crimson Pro', serif;
-      font-size: 1.05rem;
-      font-style: italic;
-      line-height: 1.85;
-      color: rgba(240,232,216,0.65);
-      margin-bottom: 2rem;
-    }
-    .featured-divider {
+    .featured-hero__divider {
       width: 3rem;
       height: 1px;
-      background: rgba(201,151,43,0.4);
+      background: rgba(201,151,43,0.45);
+      margin-bottom: 1.4rem;
+    }
+    .featured-hero__excerpt {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1rem;
+      font-style: italic;
+      line-height: 1.8;
+      color: rgba(240,232,216,0.62);
       margin-bottom: 2rem;
     }
-    .featured-art {
-      background: rgba(201,151,43,0.06);
-      border: 1px solid rgba(201,151,43,0.18);
-      aspect-ratio: 4/3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .featured-art-inner {
-      font-family: 'Cinzel', serif;
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: rgba(201,151,43,0.35);
-    }
+
+    /* ── Writing Cards with Images ── */
     .writing-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -69,56 +72,127 @@
       margin-top: 3rem;
     }
     .writing-card {
-      border-top: 1px solid rgba(139,69,19,0.2);
-      padding-top: 1.8rem;
       display: flex;
       flex-direction: column;
+      background: #fff;
+      border: 1px solid rgba(139,69,19,0.1);
+      overflow: hidden;
+      transition: box-shadow 0.25s;
+    }
+    .writing-card:hover { box-shadow: 0 6px 28px rgba(61,43,31,0.1); }
+    .writing-card__img-wrap {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: rgba(201,151,43,0.07);
+    }
+    .writing-card__img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .writing-card:hover .writing-card__img-wrap img { transform: scale(1.04); }
+    .writing-card__body {
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
     .writing-card__tag {
       font-family: 'Cinzel', serif;
-      font-size: 0.55rem;
+      font-size: 0.52rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--copper-light);
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.7rem;
     }
     .writing-card__title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
+      font-size: 1.22rem;
       font-weight: 400;
-      line-height: 1.35;
+      line-height: 1.32;
       color: var(--ink);
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.75rem;
       flex-grow: 1;
     }
     .writing-card__excerpt {
       font-family: 'Crimson Pro', serif;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-style: italic;
-      line-height: 1.75;
-      color: rgba(61,43,31,0.65);
-      margin-bottom: 1.4rem;
+      line-height: 1.7;
+      color: rgba(61,43,31,0.62);
+      margin-bottom: 1.3rem;
     }
     .writing-card__link {
       font-family: 'Cinzel', serif;
-      font-size: 0.6rem;
+      font-size: 0.58rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--copper);
       text-decoration: none;
-      border-bottom: 1px solid rgba(139,69,19,0.25);
-      padding-bottom: 0.15rem;
+      border-bottom: 1px solid rgba(139,69,19,0.22);
+      padding-bottom: 0.12rem;
       align-self: flex-start;
-      transition: border-color 0.2s, color 0.2s;
+      transition: border-color 0.2s;
     }
     .writing-card__link:hover { border-color: var(--copper); }
+
+    /* ── Media & Appearances Cards ── */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .media-card {
+      border: 1px solid rgba(201,151,43,0.2);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      transition: border-color 0.2s;
+      text-decoration: none;
+    }
+    .media-card:hover { border-color: rgba(201,151,43,0.55); }
+    .media-card__type {
+      font-family: 'Cinzel', serif;
+      font-size: 0.52rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      opacity: 0.75;
+    }
+    .media-card__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      line-height: 1.35;
+      color: rgba(240,232,216,0.92);
+      flex-grow: 1;
+    }
+    .media-card__source {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.85rem;
+      font-style: italic;
+      color: rgba(240,232,216,0.45);
+    }
+    .media-card__arrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      color: var(--gold-light);
+    }
+
     @media (max-width: 900px) {
-      .featured-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
-      .featured-art { display: none; }
-      .writing-grid { grid-template-columns: 1fr 1fr; }
+      .featured-hero { grid-template-columns: 1fr; min-height: auto; }
+      .featured-hero__img { min-height: 240px; max-height: 300px; }
+      .featured-hero__body { padding: 2rem; }
+      .writing-grid, .media-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 600px) {
-      .writing-grid { grid-template-columns: 1fr; }
+      .writing-grid, .media-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -154,106 +228,150 @@
   <!-- ══ FEATURED ARTICLE ══ -->
   <section class="section section--dark" id="featured">
     <div class="section-inner">
-      <p class="section-label section-label--gold reveal">Featured</p>
-      <div class="featured-wrap reveal">
-        <div>
-          <p class="featured-label">Latest Essay</p>
-          <h2 class="featured-title">Lead us Beside and Into the Still Darkness</h2>
-          <div class="featured-divider"></div>
-          <p class="featured-excerpt">
+      <p class="section-label section-label--gold reveal">Featured Essay</p>
+      <div class="featured-hero reveal">
+        <img class="featured-hero__img"
+             src="photos/wjm-featured-candles.jpg"
+             alt="Candlelit table at dusk — Guatemala, Lake Atitlán" />
+        <div class="featured-hero__body">
+          <p class="featured-hero__eyebrow">Latest Essay</p>
+          <h2 class="featured-hero__title">Lead us Beside and Into the Still Darkness</h2>
+          <div class="featured-hero__divider"></div>
+          <p class="featured-hero__excerpt">
             "Our God — who moves in heaven — and Earth / Lead us beside and into the still Darkness. / Into the womb of advent, the place of preparation."
           </p>
           <a href="https://brotherwesley.substack.com/p/lead-us-beside-and-into-the-still"
              target="_blank" rel="noopener noreferrer"
              class="btn btn--primary">Read on Substack</a>
         </div>
-        <div class="featured-art">
-          <span class="featured-art-inner">Brother Wesley</span>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- ══ ARTICLES GRID ══ -->
+  <!-- ══ WRITING GRID ══ -->
   <section class="section section--light" id="writing">
     <div class="section-inner">
       <p class="section-label reveal">All Writing</p>
       <h2 class="section-heading reveal">Essays &amp; <em>Reflections</em></h2>
-      <p class="section-subhead reveal">
-        Explorations in theology, community, justice, and the sacred life. Available in full at Brother Wesley on Substack.
-      </p>
+      <p class="section-subhead reveal">Explorations in theology, community, justice, and the sacred life — available in full at Brother Wesley on Substack.</p>
+
       <div class="writing-grid">
 
         <article class="writing-card reveal">
-          <p class="writing-card__tag">Memory &amp; Identity</p>
-          <h3 class="writing-card__title">The Child Never Leaves</h3>
-          <p class="writing-card__excerpt">A meditation on the self we carry — the child who formed us, who never fully departs no matter how far we travel.</p>
-          <a href="https://brotherwesley.substack.com/p/the-child-never-leaves-by-wesley-morris-16b608454bf0"
-             target="_blank" rel="noopener noreferrer" class="writing-card__link">Read Essay &#8594;</a>
+          <div class="writing-card__img-wrap">
+            <img src="https://cdn-images-1.medium.com/max/668/1*FRgjFTZx_b2NY6AfK9EbOQ.jpeg" alt="The Child Never Leaves" />
+          </div>
+          <div class="writing-card__body">
+            <p class="writing-card__tag">Memory &amp; Identity</p>
+            <h3 class="writing-card__title">The Child Never Leaves</h3>
+            <p class="writing-card__excerpt">A meditation on the self we carry — the child who formed us, who never fully departs no matter how far we travel.</p>
+            <a href="https://brotherwesley.substack.com/p/the-child-never-leaves-by-wesley-morris-16b608454bf0"
+               target="_blank" rel="noopener noreferrer" class="writing-card__link">Read Essay &#8594;</a>
+          </div>
         </article>
 
         <article class="writing-card reveal">
-          <p class="writing-card__tag">Leadership &amp; Faith</p>
-          <h3 class="writing-card__title">Leadership Lab: Wesley Morris — Church Anew</h3>
-          <p class="writing-card__excerpt">A conversation on transformative leadership for faith communities — connecting resources for churches navigating change.</p>
-          <a href="https://brotherwesley.substack.com/p/leadership-lab-wesley-morris-church-anew-7788907af9f2"
-             target="_blank" rel="noopener noreferrer" class="writing-card__link">Read Essay &#8594;</a>
+          <div class="writing-card__img-wrap">
+            <img src="https://cdn-images-1.medium.com/max/1024/0*mnpQROIcbHhPvlhE" alt="Leadership Lab: Wesley Morris — Church Anew" />
+          </div>
+          <div class="writing-card__body">
+            <p class="writing-card__tag">Leadership &amp; Faith</p>
+            <h3 class="writing-card__title">Leadership Lab: Wesley Morris — Church Anew</h3>
+            <p class="writing-card__excerpt">A conversation on transformative leadership for faith communities — connecting resources for churches navigating change.</p>
+            <a href="https://brotherwesley.substack.com/p/leadership-lab-wesley-morris-church-anew-7788907af9f2"
+               target="_blank" rel="noopener noreferrer" class="writing-card__link">Read Essay &#8594;</a>
+          </div>
         </article>
 
         <article class="writing-card reveal">
-          <p class="writing-card__tag">Music &amp; Spirit</p>
-          <h3 class="writing-card__title">No One Knows Me Like My Piano</h3>
-          <p class="writing-card__excerpt">I still remember running down the staircase, peering over the bannister with my five year old eyes — and the piano that has known me through every season since.</p>
-          <a href="https://brotherwesley.substack.com/p/no-one-knows-me-like-my-piano-c366a815e610"
-             target="_blank" rel="noopener noreferrer" class="writing-card__link">Read Essay &#8594;</a>
+          <div class="writing-card__img-wrap">
+            <img src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd1c36e12-c9b8-44e5-8a0b-b94bd78c6a76_960x720.jpeg" alt="No One Knows Me Like My Piano" />
+          </div>
+          <div class="writing-card__body">
+            <p class="writing-card__tag">Music &amp; Spirit</p>
+            <h3 class="writing-card__title">No One Knows Me Like My Piano</h3>
+            <p class="writing-card__excerpt">I still remember running down the staircase, peering over the bannister with my five year old eyes — and the piano that has known me through every season since.</p>
+            <a href="https://brotherwesley.substack.com/p/no-one-knows-me-like-my-piano-c366a815e610"
+               target="_blank" rel="noopener noreferrer" class="writing-card__link">Read Essay &#8594;</a>
+          </div>
         </article>
 
         <article class="writing-card reveal">
-          <p class="writing-card__tag">Devotion</p>
-          <h3 class="writing-card__title">Life Wakes Up With Us</h3>
-          <p class="writing-card__excerpt">Life wakes up with us, each day, breaking through to meet us in innumerable ways — whether in the unconscious or in the light of awareness.</p>
-          <a href="https://brotherwesley.substack.com/p/life-wakes-up-with-us"
-             target="_blank" rel="noopener noreferrer" class="writing-card__link">Read Essay &#8594;</a>
+          <div class="writing-card__img-wrap">
+            <img src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1640a24d-1093-477b-9069-eb4f3ceaac56_720x960.webp" alt="Life Wakes Up With Us" />
+          </div>
+          <div class="writing-card__body">
+            <p class="writing-card__tag">Devotion</p>
+            <h3 class="writing-card__title">Life Wakes Up With Us</h3>
+            <p class="writing-card__excerpt">Life wakes up with us, each day, breaking through to meet us in innumerable ways — whether in the unconscious or in the light of awareness.</p>
+            <a href="https://brotherwesley.substack.com/p/life-wakes-up-with-us"
+               target="_blank" rel="noopener noreferrer" class="writing-card__link">Read Essay &#8594;</a>
+          </div>
         </article>
 
         <article class="writing-card reveal">
-          <p class="writing-card__tag">Encouragement</p>
-          <h3 class="writing-card__title">Finish Strong</h3>
-          <p class="writing-card__excerpt">Never let go of the fire inside. A word for those in the final stretch — the season when endurance becomes its own form of witness.</p>
-          <a href="https://brotherwesley.substack.com/p/finish-strong-f23c7c4270d7"
-             target="_blank" rel="noopener noreferrer" class="writing-card__link">Read Essay &#8594;</a>
+          <div class="writing-card__img-wrap">
+            <img src="https://cdn-images-1.medium.com/max/1024/1*0B0yKnz-ZCk4B_ysVDUFqg.jpeg" alt="Finish Strong" />
+          </div>
+          <div class="writing-card__body">
+            <p class="writing-card__tag">Encouragement</p>
+            <h3 class="writing-card__title">Finish Strong</h3>
+            <p class="writing-card__excerpt">Never let go of the fire inside. A word for those in the final stretch — the season when endurance becomes its own form of witness.</p>
+            <a href="https://brotherwesley.substack.com/p/finish-strong-f23c7c4270d7"
+               target="_blank" rel="noopener noreferrer" class="writing-card__link">Read Essay &#8594;</a>
+          </div>
         </article>
 
         <article class="writing-card reveal">
-          <p class="writing-card__tag">Race &amp; Power</p>
-          <h3 class="writing-card__title">Black Paper Bought and Sold</h3>
-          <p class="writing-card__excerpt">A story told under the guise of Black Paper being bought and sold — on ownership, narrative, and what it means to tell our own stories.</p>
-          <a href="https://brotherwesley.substack.com/p/black-paper-bought-and-sold-944719bbd7a1"
-             target="_blank" rel="noopener noreferrer" class="writing-card__link">Read Essay &#8594;</a>
+          <div class="writing-card__img-wrap">
+            <img src="https://cdn-images-1.medium.com/max/1024/1*2Ru9PLiPuF4WCK1Td34oFw.jpeg" alt="Black Paper Bought and Sold" />
+          </div>
+          <div class="writing-card__body">
+            <p class="writing-card__tag">Race &amp; Power</p>
+            <h3 class="writing-card__title">Black Paper Bought and Sold</h3>
+            <p class="writing-card__excerpt">A story told under the guise of Black Paper being bought and sold — on ownership, narrative, and what it means to tell our own stories.</p>
+            <a href="https://brotherwesley.substack.com/p/black-paper-bought-and-sold-944719bbd7a1"
+               target="_blank" rel="noopener noreferrer" class="writing-card__link">Read Essay &#8594;</a>
+          </div>
         </article>
 
         <article class="writing-card reveal">
-          <p class="writing-card__tag">Liberation</p>
-          <h3 class="writing-card__title">Large Shadows and Great Suns</h3>
-          <p class="writing-card__excerpt">Continue to fly. On the tension between the shadows that loom and the light that insists on breaking through — and what it means to soar anyway.</p>
-          <a href="https://brotherwesley.substack.com/p/large-shadows-and-great-suns-682d513cee22"
-             target="_blank" rel="noopener noreferrer" class="writing-card__link">Read Essay &#8594;</a>
+          <div class="writing-card__img-wrap">
+            <img src="https://cdn-images-1.medium.com/max/834/1*d55I2JQ91id9H57scTPRDA.jpeg" alt="Large Shadows and Great Suns" />
+          </div>
+          <div class="writing-card__body">
+            <p class="writing-card__tag">Liberation</p>
+            <h3 class="writing-card__title">Large Shadows and Great Suns</h3>
+            <p class="writing-card__excerpt">Continue to fly. On the tension between the shadows that loom and the light that insists on breaking through — and what it means to soar anyway.</p>
+            <a href="https://brotherwesley.substack.com/p/large-shadows-and-great-suns-682d513cee22"
+               target="_blank" rel="noopener noreferrer" class="writing-card__link">Read Essay &#8594;</a>
+          </div>
         </article>
 
         <article class="writing-card reveal">
-          <p class="writing-card__tag">Justice &amp; Action</p>
-          <h3 class="writing-card__title">What Activist Wesley Morris Talks About When He Talks About Black Man Running</h3>
-          <p class="writing-card__excerpt">Interviewing Black men from all walks of life about why they run — and what movement, in every sense, means for liberation.</p>
-          <a href="https://brotherwesley.substack.com/p/what-activist-wesley-morris-talks"
-             target="_blank" rel="noopener noreferrer" class="writing-card__link">Read Essay &#8594;</a>
+          <div class="writing-card__img-wrap">
+            <img src="https://cdn-images-1.medium.com/max/1024/1*CHVglMLS9F3rEmwuvcH3Fg.jpeg" alt="What Activist Wesley Morris Talks About When He Talks About Black Man Running" />
+          </div>
+          <div class="writing-card__body">
+            <p class="writing-card__tag">Justice &amp; Action</p>
+            <h3 class="writing-card__title">What Activist Wesley Morris Talks About When He Talks About Black Man Running</h3>
+            <p class="writing-card__excerpt">Interviewing Black men from all walks of life about why they run — and what movement, in every sense, means for liberation.</p>
+            <a href="https://brotherwesley.substack.com/p/what-activist-wesley-morris-talks"
+               target="_blank" rel="noopener noreferrer" class="writing-card__link">Read Essay &#8594;</a>
+          </div>
         </article>
 
         <article class="writing-card reveal">
-          <p class="writing-card__tag">Lament &amp; Hope</p>
-          <h3 class="writing-card__title">Palestine: Sing Your Spirit Home</h3>
-          <p class="writing-card__excerpt">A piece written out of grief and solidarity — an act of witness, lamentation, and the stubborn insistence that spirit survives.</p>
-          <a href="https://brotherwesley.substack.com/p/palestine-sing-your-spirit-home-6d3220eb3ff0"
-             target="_blank" rel="noopener noreferrer" class="writing-card__link">Read Essay &#8594;</a>
+          <div class="writing-card__img-wrap">
+            <img src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F89685168-12a6-42f5-b02e-7376dfb06e8e_1024x983.jpeg" alt="Palestine: Sing Your Spirit Home" />
+          </div>
+          <div class="writing-card__body">
+            <p class="writing-card__tag">Lament &amp; Hope</p>
+            <h3 class="writing-card__title">Palestine: Sing Your Spirit Home</h3>
+            <p class="writing-card__excerpt">A piece written out of grief and solidarity — an act of witness, lamentation, and the stubborn insistence that spirit survives.</p>
+            <a href="https://brotherwesley.substack.com/p/palestine-sing-your-spirit-home-6d3220eb3ff0"
+               target="_blank" rel="noopener noreferrer" class="writing-card__link">Read Essay &#8594;</a>
+          </div>
         </article>
 
       </div>
@@ -261,21 +379,88 @@
   </section>
 
   <!-- ══ SUBSTACK CTA ══ -->
-  <section class="section section--dark" style="padding: 5rem 2rem;">
-    <div class="section-inner" style="text-align: center; max-width: 700px;">
+  <section class="section section--dark" style="padding: 4rem 2rem;">
+    <div class="section-inner" style="text-align:center; max-width:680px;">
       <p class="section-label section-label--gold reveal">Stay Connected</p>
       <h2 class="section-heading section-heading--light reveal">Read More on <em style="color:var(--gold-light);">Brother Wesley</em></h2>
-      <p class="reveal" style="font-family:'Crimson Pro',serif; font-size:1.1rem; line-height:1.85; color:rgba(240,232,216,0.72); margin-top:1.5rem;">
-        All writing, new essays, and reflections are published on Substack. Subscribe to receive new pieces directly in your inbox — no algorithms, no noise, just the work.
+      <p class="reveal" style="font-family:'Crimson Pro',serif;font-size:1.05rem;line-height:1.85;color:rgba(240,232,216,0.68);margin-top:1.5rem;">
+        All writing and new essays are published on Substack. Subscribe to receive new pieces directly in your inbox.
       </p>
-      <div class="reveal" style="margin-top: 2.5rem;">
+      <div class="reveal" style="margin-top:2rem;">
         <a href="https://brotherwesley.substack.com" target="_blank" rel="noopener noreferrer"
            class="btn btn--primary">Visit Brother Wesley on Substack</a>
       </div>
     </div>
   </section>
 
-  <div class="ornament" style="background:var(--charcoal); color:rgba(201,151,43,0.3);">&#10022; &nbsp; &#10022; &nbsp; &#10022;</div>
+  <!-- ══ MEDIA & APPEARANCES ══ -->
+  <section class="section section--light" id="media">
+    <div class="section-inner">
+      <p class="section-label reveal">In the Media</p>
+      <h2 class="section-heading reveal">Media &amp; <em>Appearances</em></h2>
+      <p class="section-subhead reveal">Selected features, documentaries, podcast conversations, and public addresses.</p>
+
+      <div class="media-grid">
+
+        <a href="https://www.youtube.com/watch?v=FMcSMIgJkVQ&t=13s"
+           target="_blank" rel="noopener noreferrer" class="media-card reveal"
+           style="background:rgba(201,151,43,0.04);">
+          <p class="media-card__type" style="color:var(--copper-light);">Documentary</p>
+          <p class="media-card__title" style="color:var(--ink);">Picking Progress</p>
+          <p class="media-card__source" style="color:rgba(61,43,31,0.5);">YouTube</p>
+          <p class="media-card__arrow" style="color:var(--copper);">Watch &#8594;</p>
+        </a>
+
+        <a href="https://www.youtube.com/watch?v=SAF-n20oIJE"
+           target="_blank" rel="noopener noreferrer" class="media-card reveal"
+           style="background:rgba(201,151,43,0.04); border-color:rgba(139,69,19,0.15);">
+          <p class="media-card__type" style="color:var(--copper-light);">Documentary</p>
+          <p class="media-card__title" style="color:var(--ink);">BBC Documentary</p>
+          <p class="media-card__source" style="color:rgba(61,43,31,0.5);">BBC / YouTube</p>
+          <p class="media-card__arrow" style="color:var(--copper);">Watch &#8594;</p>
+        </a>
+
+        <a href="https://www.keystepmedia.com/podcast/chasing-the-happiness-high-pt-3-spirituality-w-wesley-morris/"
+           target="_blank" rel="noopener noreferrer" class="media-card reveal"
+           style="background:rgba(201,151,43,0.04); border-color:rgba(139,69,19,0.15);">
+          <p class="media-card__type" style="color:var(--copper-light);">Podcast</p>
+          <p class="media-card__title" style="color:var(--ink);">Chasing the Happiness High: Spirituality with Wesley Morris</p>
+          <p class="media-card__source" style="color:rgba(61,43,31,0.5);">Keystep Media</p>
+          <p class="media-card__arrow" style="color:var(--copper);">Listen &#8594;</p>
+        </a>
+
+        <a href="https://music.amazon.com.mx/podcasts/4c018f53-c704-4169-af13-3b3fcbbf90d4/episodes/a6219e81-04b1-48e1-93db-3bcd55a678db/the-wonder-dome-60-in-awe-of-the-stars-with-wesley-morris"
+           target="_blank" rel="noopener noreferrer" class="media-card reveal"
+           style="background:rgba(201,151,43,0.04); border-color:rgba(139,69,19,0.15);">
+          <p class="media-card__type" style="color:var(--copper-light);">Podcast</p>
+          <p class="media-card__title" style="color:var(--ink);">The Wonder Dome: In Awe of the Stars with Wesley Morris</p>
+          <p class="media-card__source" style="color:rgba(61,43,31,0.5);">Amazon Music</p>
+          <p class="media-card__arrow" style="color:var(--copper);">Listen &#8594;</p>
+        </a>
+
+        <a href="https://www.pbs.org/video/unc-tv-presents-harvest-dignity/"
+           target="_blank" rel="noopener noreferrer" class="media-card reveal"
+           style="background:rgba(201,151,43,0.04); border-color:rgba(139,69,19,0.15);">
+          <p class="media-card__type" style="color:var(--copper-light);">Television</p>
+          <p class="media-card__title" style="color:var(--ink);">Harvest of Dignity</p>
+          <p class="media-card__source" style="color:rgba(61,43,31,0.5);">PBS / UNC-TV</p>
+          <p class="media-card__arrow" style="color:var(--copper);">Watch &#8594;</p>
+        </a>
+
+        <a href="https://www.youtube.com/watch?v=0LKPQ4lamNQ&t=7594s"
+           target="_blank" rel="noopener noreferrer" class="media-card reveal"
+           style="background:rgba(201,151,43,0.04); border-color:rgba(139,69,19,0.15);">
+          <p class="media-card__type" style="color:var(--copper-light);">Address</p>
+          <p class="media-card__title" style="color:var(--ink);">Union Theological Seminary Commencement Address</p>
+          <p class="media-card__source" style="color:rgba(61,43,31,0.5);">YouTube &mdash; begins at 2:02:30</p>
+          <p class="media-card__arrow" style="color:var(--copper);">Watch &#8594;</p>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="ornament" style="background:var(--ivory);color:rgba(139,69,19,0.2);">&#10022; &nbsp; &#10022; &nbsp; &#10022;</div>
 
   <!-- ══ FOOTER ══ -->
   <footer class="site-footer">
